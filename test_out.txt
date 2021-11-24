@@ -1,0 +1,43 @@
+int num 
+GOTO Func_tail_0
+
+factorial:
+PARAM int num
+temp_0 = num == 1
+if temp_0 == 0 Goto label_0
+RETURN 1
+label_0:
+temp_1 = num - 1
+ARG temp_1
+CALL factorial
+temp_2 = num * factorial(temp_1)
+RETURN temp_2
+Func_tail_0:
+GOTO Func_tail_1
+
+main:
+num = 1
+int res 
+char N 
+CALL input
+temp_3 = itoc(input())
+N = temp_3
+start_while_0:
+temp_4 = ctoi(N)
+temp_5 = num <= temp_4
+if temp_5 == 0 Goto end_while_0
+ARG num
+CALL factorial
+res = factorial(num)
+ARG res
+CALL print
+temp_6 = num + 1
+num = temp_6
+Goto start_while_0
+end_while_0:
+temp_7 = ctoi(N)
+temp_8 = temp_7 << 1
+RETURN temp_8
+Func_tail_1:
+
+CALL main

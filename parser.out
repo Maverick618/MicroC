@@ -1,0 +1,3220 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    COMMENT
+
+Grammar
+
+Rule 0     S' -> Start
+Rule 1     Start -> Program
+Rule 2     Program -> Program GlobalDecl
+Rule 3     Program -> <empty>
+Rule 4     GlobalDecl -> FuncDecl
+Rule 5     GlobalDecl -> VarDecl SEMI
+Rule 6     FuncDecl -> FuncHead FuncBody
+Rule 7     FuncHead -> Type FuncName LPAREN newScope Args RPAREN
+Rule 8     FuncBody -> LBRACE Stmts RBRACE
+Rule 9     newScope -> <empty>
+Rule 10    FuncName -> ID
+Rule 11    Args -> Arg
+Rule 12    Args -> <empty>
+Rule 13    Type -> INT
+Rule 14    Type -> CHAR
+Rule 15    Type -> VOID
+Rule 16    Arg -> Type ID
+Rule 17    Arg -> Arg COMMA Type ID
+Rule 18    VarDeclStmt -> VarDecl SEMI
+Rule 19    VarDecl -> Type ID
+Rule 20    VarDecl -> VarDecl COMMA ID
+Rule 21    Stmts -> Stmts Stmt
+Rule 22    Stmts -> <empty>
+Rule 23    Stmt -> AssignStmt
+Rule 24    Stmt -> PrintStmt
+Rule 25    Stmt -> CallStmt
+Rule 26    Stmt -> ReturnStmt
+Rule 27    Stmt -> IfStmt
+Rule 28    Stmt -> WhileStmt
+Rule 29    Stmt -> BreakStmt
+Rule 30    Stmt -> ContinueStmt
+Rule 31    Stmt -> VarDeclStmt
+Rule 32    AssignStmt -> ID ASSIGN Expr SEMI
+Rule 33    PrintStmt -> PRINT LPAREN Actuals RPAREN SEMI
+Rule 34    PActuals -> PActuals COMMA Expr
+Rule 35    PActuals -> <empty>
+Rule 36    CallStmt -> CallExpr SEMI
+Rule 37    CallExpr -> ID LPAREN Actuals RPAREN
+Rule 38    Actuals -> Expr PActuals
+Rule 39    Actuals -> <empty>
+Rule 40    ReturnStmt -> RETURN Expr SEMI
+Rule 41    ReturnStmt -> RETURN SEMI
+Rule 42    IfStmt -> If TestExpr Then StmtsBlock EndThen EndIf
+Rule 43    IfStmt -> If TestExpr Then StmtsBlock EndThen Else StmtsBlock EndIf
+Rule 44    TestExpr -> LPAREN Expr RPAREN
+Rule 45    StmtsBlock -> LBRACE newScope Stmts RBRACE
+Rule 46    If -> IF
+Rule 47    Else -> ELSE
+Rule 48    Then -> <empty>
+Rule 49    EndThen -> <empty>
+Rule 50    EndIf -> <empty>
+Rule 51    WhileStmt -> While TestExpr Do StmtsBlock EndWhile
+Rule 52    While -> WHILE
+Rule 53    Do -> <empty>
+Rule 54    EndWhile -> <empty>
+Rule 55    BreakStmt -> BREAK SEMI
+Rule 56    ContinueStmt -> CONTINUE SEMI
+Rule 57    Expr -> Expr PLUS Expr
+Rule 58    Expr -> Expr MINUS Expr
+Rule 59    Expr -> Expr TIMES Expr
+Rule 60    Expr -> Expr DIVIDE Expr
+Rule 61    Expr -> Expr LSHIFT Expr
+Rule 62    Expr -> Expr RSHIFT Expr
+Rule 63    Expr -> Expr LT Expr
+Rule 64    Expr -> Expr GT Expr
+Rule 65    Expr -> Expr EQ Expr
+Rule 66    Expr -> Expr NE Expr
+Rule 67    Expr -> Expr LE Expr
+Rule 68    Expr -> Expr GE Expr
+Rule 69    Expr -> Expr OR Expr
+Rule 70    Expr -> Expr AND Expr
+Rule 71    Expr -> NOT Expr
+Rule 72    Expr -> MINUS Expr
+Rule 73    Expr -> NUMBER
+Rule 74    Expr -> LPAREN Expr RPAREN
+Rule 75    Expr -> CallExpr
+Rule 76    Expr -> ID
+
+Terminals, with rules where they appear
+
+AND                  : 70
+ASSIGN               : 32
+BREAK                : 55
+CHAR                 : 14
+COMMA                : 17 20 34
+COMMENT              : 
+CONTINUE             : 56
+DIVIDE               : 60
+ELSE                 : 47
+EQ                   : 65
+GE                   : 68
+GT                   : 64
+ID                   : 10 16 17 19 20 32 37 76
+IF                   : 46
+INT                  : 13
+LBRACE               : 8 45
+LE                   : 67
+LPAREN               : 7 33 37 44 74
+LSHIFT               : 61
+LT                   : 63
+MINUS                : 58 72
+NE                   : 66
+NOT                  : 71
+NUMBER               : 73
+OR                   : 69
+PLUS                 : 57
+PRINT                : 33
+RBRACE               : 8 45
+RETURN               : 40 41
+RPAREN               : 7 33 37 44 74
+RSHIFT               : 62
+SEMI                 : 5 18 32 33 36 40 41 55 56
+TIMES                : 59
+VOID                 : 15
+WHILE                : 52
+error                : 
+
+Nonterminals, with rules where they appear
+
+Actuals              : 33 37
+Arg                  : 11 17
+Args                 : 7
+AssignStmt           : 23
+BreakStmt            : 29
+CallExpr             : 36 75
+CallStmt             : 25
+ContinueStmt         : 30
+Do                   : 51
+Else                 : 43
+EndIf                : 42 43
+EndThen              : 42 43
+EndWhile             : 51
+Expr                 : 32 34 38 40 44 57 57 58 58 59 59 60 60 61 61 62 62 63 63 64 64 65 65 66 66 67 67 68 68 69 69 70 70 71 72 74
+FuncBody             : 6
+FuncDecl             : 4
+FuncHead             : 6
+FuncName             : 7
+GlobalDecl           : 2
+If                   : 42 43
+IfStmt               : 27
+PActuals             : 34 38
+PrintStmt            : 24
+Program              : 1 2
+ReturnStmt           : 26
+Start                : 0
+Stmt                 : 21
+Stmts                : 8 21 45
+StmtsBlock           : 42 43 43 51
+TestExpr             : 42 43 51
+Then                 : 42 43
+Type                 : 7 16 17 19
+VarDecl              : 5 18 20
+VarDeclStmt          : 31
+While                : 51
+WhileStmt            : 28
+newScope             : 7 45
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . Start
+    (1) Start -> . Program
+    (2) Program -> . Program GlobalDecl
+    (3) Program -> .
+
+    INT             reduce using rule 3 (Program -> .)
+    CHAR            reduce using rule 3 (Program -> .)
+    VOID            reduce using rule 3 (Program -> .)
+    $end            reduce using rule 3 (Program -> .)
+
+    Start                          shift and go to state 1
+    Program                        shift and go to state 2
+
+state 1
+
+    (0) S' -> Start .
+
+
+
+state 2
+
+    (1) Start -> Program .
+    (2) Program -> Program . GlobalDecl
+    (4) GlobalDecl -> . FuncDecl
+    (5) GlobalDecl -> . VarDecl SEMI
+    (6) FuncDecl -> . FuncHead FuncBody
+    (19) VarDecl -> . Type ID
+    (20) VarDecl -> . VarDecl COMMA ID
+    (7) FuncHead -> . Type FuncName LPAREN newScope Args RPAREN
+    (13) Type -> . INT
+    (14) Type -> . CHAR
+    (15) Type -> . VOID
+
+    $end            reduce using rule 1 (Start -> Program .)
+    INT             shift and go to state 8
+    CHAR            shift and go to state 9
+    VOID            shift and go to state 10
+
+    GlobalDecl                     shift and go to state 3
+    FuncDecl                       shift and go to state 4
+    VarDecl                        shift and go to state 5
+    FuncHead                       shift and go to state 6
+    Type                           shift and go to state 7
+
+state 3
+
+    (2) Program -> Program GlobalDecl .
+
+    INT             reduce using rule 2 (Program -> Program GlobalDecl .)
+    CHAR            reduce using rule 2 (Program -> Program GlobalDecl .)
+    VOID            reduce using rule 2 (Program -> Program GlobalDecl .)
+    $end            reduce using rule 2 (Program -> Program GlobalDecl .)
+
+
+state 4
+
+    (4) GlobalDecl -> FuncDecl .
+
+    INT             reduce using rule 4 (GlobalDecl -> FuncDecl .)
+    CHAR            reduce using rule 4 (GlobalDecl -> FuncDecl .)
+    VOID            reduce using rule 4 (GlobalDecl -> FuncDecl .)
+    $end            reduce using rule 4 (GlobalDecl -> FuncDecl .)
+
+
+state 5
+
+    (5) GlobalDecl -> VarDecl . SEMI
+    (20) VarDecl -> VarDecl . COMMA ID
+
+    SEMI            shift and go to state 11
+    COMMA           shift and go to state 12
+
+
+state 6
+
+    (6) FuncDecl -> FuncHead . FuncBody
+    (8) FuncBody -> . LBRACE Stmts RBRACE
+
+    LBRACE          shift and go to state 14
+
+    FuncBody                       shift and go to state 13
+
+state 7
+
+    (19) VarDecl -> Type . ID
+    (7) FuncHead -> Type . FuncName LPAREN newScope Args RPAREN
+    (10) FuncName -> . ID
+
+    ID              shift and go to state 15
+
+    FuncName                       shift and go to state 16
+
+state 8
+
+    (13) Type -> INT .
+
+    ID              reduce using rule 13 (Type -> INT .)
+
+
+state 9
+
+    (14) Type -> CHAR .
+
+    ID              reduce using rule 14 (Type -> CHAR .)
+
+
+state 10
+
+    (15) Type -> VOID .
+
+    ID              reduce using rule 15 (Type -> VOID .)
+
+
+state 11
+
+    (5) GlobalDecl -> VarDecl SEMI .
+
+    INT             reduce using rule 5 (GlobalDecl -> VarDecl SEMI .)
+    CHAR            reduce using rule 5 (GlobalDecl -> VarDecl SEMI .)
+    VOID            reduce using rule 5 (GlobalDecl -> VarDecl SEMI .)
+    $end            reduce using rule 5 (GlobalDecl -> VarDecl SEMI .)
+
+
+state 12
+
+    (20) VarDecl -> VarDecl COMMA . ID
+
+    ID              shift and go to state 17
+
+
+state 13
+
+    (6) FuncDecl -> FuncHead FuncBody .
+
+    INT             reduce using rule 6 (FuncDecl -> FuncHead FuncBody .)
+    CHAR            reduce using rule 6 (FuncDecl -> FuncHead FuncBody .)
+    VOID            reduce using rule 6 (FuncDecl -> FuncHead FuncBody .)
+    $end            reduce using rule 6 (FuncDecl -> FuncHead FuncBody .)
+
+
+state 14
+
+    (8) FuncBody -> LBRACE . Stmts RBRACE
+    (21) Stmts -> . Stmts Stmt
+    (22) Stmts -> .
+
+    RBRACE          reduce using rule 22 (Stmts -> .)
+    ID              reduce using rule 22 (Stmts -> .)
+    PRINT           reduce using rule 22 (Stmts -> .)
+    RETURN          reduce using rule 22 (Stmts -> .)
+    BREAK           reduce using rule 22 (Stmts -> .)
+    CONTINUE        reduce using rule 22 (Stmts -> .)
+    IF              reduce using rule 22 (Stmts -> .)
+    WHILE           reduce using rule 22 (Stmts -> .)
+    INT             reduce using rule 22 (Stmts -> .)
+    CHAR            reduce using rule 22 (Stmts -> .)
+    VOID            reduce using rule 22 (Stmts -> .)
+
+    Stmts                          shift and go to state 18
+
+state 15
+
+    (19) VarDecl -> Type ID .
+    (10) FuncName -> ID .
+
+    SEMI            reduce using rule 19 (VarDecl -> Type ID .)
+    COMMA           reduce using rule 19 (VarDecl -> Type ID .)
+    LPAREN          reduce using rule 10 (FuncName -> ID .)
+
+
+state 16
+
+    (7) FuncHead -> Type FuncName . LPAREN newScope Args RPAREN
+
+    LPAREN          shift and go to state 19
+
+
+state 17
+
+    (20) VarDecl -> VarDecl COMMA ID .
+
+    SEMI            reduce using rule 20 (VarDecl -> VarDecl COMMA ID .)
+    COMMA           reduce using rule 20 (VarDecl -> VarDecl COMMA ID .)
+
+
+state 18
+
+    (8) FuncBody -> LBRACE Stmts . RBRACE
+    (21) Stmts -> Stmts . Stmt
+    (23) Stmt -> . AssignStmt
+    (24) Stmt -> . PrintStmt
+    (25) Stmt -> . CallStmt
+    (26) Stmt -> . ReturnStmt
+    (27) Stmt -> . IfStmt
+    (28) Stmt -> . WhileStmt
+    (29) Stmt -> . BreakStmt
+    (30) Stmt -> . ContinueStmt
+    (31) Stmt -> . VarDeclStmt
+    (32) AssignStmt -> . ID ASSIGN Expr SEMI
+    (33) PrintStmt -> . PRINT LPAREN Actuals RPAREN SEMI
+    (36) CallStmt -> . CallExpr SEMI
+    (40) ReturnStmt -> . RETURN Expr SEMI
+    (41) ReturnStmt -> . RETURN SEMI
+    (42) IfStmt -> . If TestExpr Then StmtsBlock EndThen EndIf
+    (43) IfStmt -> . If TestExpr Then StmtsBlock EndThen Else StmtsBlock EndIf
+    (51) WhileStmt -> . While TestExpr Do StmtsBlock EndWhile
+    (55) BreakStmt -> . BREAK SEMI
+    (56) ContinueStmt -> . CONTINUE SEMI
+    (18) VarDeclStmt -> . VarDecl SEMI
+    (37) CallExpr -> . ID LPAREN Actuals RPAREN
+    (46) If -> . IF
+    (52) While -> . WHILE
+    (19) VarDecl -> . Type ID
+    (20) VarDecl -> . VarDecl COMMA ID
+    (13) Type -> . INT
+    (14) Type -> . CHAR
+    (15) Type -> . VOID
+
+    RBRACE          shift and go to state 20
+    ID              shift and go to state 31
+    PRINT           shift and go to state 32
+    RETURN          shift and go to state 34
+    BREAK           shift and go to state 37
+    CONTINUE        shift and go to state 38
+    IF              shift and go to state 40
+    WHILE           shift and go to state 41
+    INT             shift and go to state 8
+    CHAR            shift and go to state 9
+    VOID            shift and go to state 10
+
+    Stmt                           shift and go to state 21
+    AssignStmt                     shift and go to state 22
+    PrintStmt                      shift and go to state 23
+    CallStmt                       shift and go to state 24
+    ReturnStmt                     shift and go to state 25
+    IfStmt                         shift and go to state 26
+    WhileStmt                      shift and go to state 27
+    BreakStmt                      shift and go to state 28
+    ContinueStmt                   shift and go to state 29
+    VarDeclStmt                    shift and go to state 30
+    CallExpr                       shift and go to state 33
+    If                             shift and go to state 35
+    While                          shift and go to state 36
+    VarDecl                        shift and go to state 39
+    Type                           shift and go to state 42
+
+state 19
+
+    (7) FuncHead -> Type FuncName LPAREN . newScope Args RPAREN
+    (9) newScope -> .
+
+    INT             reduce using rule 9 (newScope -> .)
+    CHAR            reduce using rule 9 (newScope -> .)
+    VOID            reduce using rule 9 (newScope -> .)
+    RPAREN          reduce using rule 9 (newScope -> .)
+
+    newScope                       shift and go to state 43
+
+state 20
+
+    (8) FuncBody -> LBRACE Stmts RBRACE .
+
+    INT             reduce using rule 8 (FuncBody -> LBRACE Stmts RBRACE .)
+    CHAR            reduce using rule 8 (FuncBody -> LBRACE Stmts RBRACE .)
+    VOID            reduce using rule 8 (FuncBody -> LBRACE Stmts RBRACE .)
+    $end            reduce using rule 8 (FuncBody -> LBRACE Stmts RBRACE .)
+
+
+state 21
+
+    (21) Stmts -> Stmts Stmt .
+
+    RBRACE          reduce using rule 21 (Stmts -> Stmts Stmt .)
+    ID              reduce using rule 21 (Stmts -> Stmts Stmt .)
+    PRINT           reduce using rule 21 (Stmts -> Stmts Stmt .)
+    RETURN          reduce using rule 21 (Stmts -> Stmts Stmt .)
+    BREAK           reduce using rule 21 (Stmts -> Stmts Stmt .)
+    CONTINUE        reduce using rule 21 (Stmts -> Stmts Stmt .)
+    IF              reduce using rule 21 (Stmts -> Stmts Stmt .)
+    WHILE           reduce using rule 21 (Stmts -> Stmts Stmt .)
+    INT             reduce using rule 21 (Stmts -> Stmts Stmt .)
+    CHAR            reduce using rule 21 (Stmts -> Stmts Stmt .)
+    VOID            reduce using rule 21 (Stmts -> Stmts Stmt .)
+
+
+state 22
+
+    (23) Stmt -> AssignStmt .
+
+    RBRACE          reduce using rule 23 (Stmt -> AssignStmt .)
+    ID              reduce using rule 23 (Stmt -> AssignStmt .)
+    PRINT           reduce using rule 23 (Stmt -> AssignStmt .)
+    RETURN          reduce using rule 23 (Stmt -> AssignStmt .)
+    BREAK           reduce using rule 23 (Stmt -> AssignStmt .)
+    CONTINUE        reduce using rule 23 (Stmt -> AssignStmt .)
+    IF              reduce using rule 23 (Stmt -> AssignStmt .)
+    WHILE           reduce using rule 23 (Stmt -> AssignStmt .)
+    INT             reduce using rule 23 (Stmt -> AssignStmt .)
+    CHAR            reduce using rule 23 (Stmt -> AssignStmt .)
+    VOID            reduce using rule 23 (Stmt -> AssignStmt .)
+
+
+state 23
+
+    (24) Stmt -> PrintStmt .
+
+    RBRACE          reduce using rule 24 (Stmt -> PrintStmt .)
+    ID              reduce using rule 24 (Stmt -> PrintStmt .)
+    PRINT           reduce using rule 24 (Stmt -> PrintStmt .)
+    RETURN          reduce using rule 24 (Stmt -> PrintStmt .)
+    BREAK           reduce using rule 24 (Stmt -> PrintStmt .)
+    CONTINUE        reduce using rule 24 (Stmt -> PrintStmt .)
+    IF              reduce using rule 24 (Stmt -> PrintStmt .)
+    WHILE           reduce using rule 24 (Stmt -> PrintStmt .)
+    INT             reduce using rule 24 (Stmt -> PrintStmt .)
+    CHAR            reduce using rule 24 (Stmt -> PrintStmt .)
+    VOID            reduce using rule 24 (Stmt -> PrintStmt .)
+
+
+state 24
+
+    (25) Stmt -> CallStmt .
+
+    RBRACE          reduce using rule 25 (Stmt -> CallStmt .)
+    ID              reduce using rule 25 (Stmt -> CallStmt .)
+    PRINT           reduce using rule 25 (Stmt -> CallStmt .)
+    RETURN          reduce using rule 25 (Stmt -> CallStmt .)
+    BREAK           reduce using rule 25 (Stmt -> CallStmt .)
+    CONTINUE        reduce using rule 25 (Stmt -> CallStmt .)
+    IF              reduce using rule 25 (Stmt -> CallStmt .)
+    WHILE           reduce using rule 25 (Stmt -> CallStmt .)
+    INT             reduce using rule 25 (Stmt -> CallStmt .)
+    CHAR            reduce using rule 25 (Stmt -> CallStmt .)
+    VOID            reduce using rule 25 (Stmt -> CallStmt .)
+
+
+state 25
+
+    (26) Stmt -> ReturnStmt .
+
+    RBRACE          reduce using rule 26 (Stmt -> ReturnStmt .)
+    ID              reduce using rule 26 (Stmt -> ReturnStmt .)
+    PRINT           reduce using rule 26 (Stmt -> ReturnStmt .)
+    RETURN          reduce using rule 26 (Stmt -> ReturnStmt .)
+    BREAK           reduce using rule 26 (Stmt -> ReturnStmt .)
+    CONTINUE        reduce using rule 26 (Stmt -> ReturnStmt .)
+    IF              reduce using rule 26 (Stmt -> ReturnStmt .)
+    WHILE           reduce using rule 26 (Stmt -> ReturnStmt .)
+    INT             reduce using rule 26 (Stmt -> ReturnStmt .)
+    CHAR            reduce using rule 26 (Stmt -> ReturnStmt .)
+    VOID            reduce using rule 26 (Stmt -> ReturnStmt .)
+
+
+state 26
+
+    (27) Stmt -> IfStmt .
+
+    RBRACE          reduce using rule 27 (Stmt -> IfStmt .)
+    ID              reduce using rule 27 (Stmt -> IfStmt .)
+    PRINT           reduce using rule 27 (Stmt -> IfStmt .)
+    RETURN          reduce using rule 27 (Stmt -> IfStmt .)
+    BREAK           reduce using rule 27 (Stmt -> IfStmt .)
+    CONTINUE        reduce using rule 27 (Stmt -> IfStmt .)
+    IF              reduce using rule 27 (Stmt -> IfStmt .)
+    WHILE           reduce using rule 27 (Stmt -> IfStmt .)
+    INT             reduce using rule 27 (Stmt -> IfStmt .)
+    CHAR            reduce using rule 27 (Stmt -> IfStmt .)
+    VOID            reduce using rule 27 (Stmt -> IfStmt .)
+
+
+state 27
+
+    (28) Stmt -> WhileStmt .
+
+    RBRACE          reduce using rule 28 (Stmt -> WhileStmt .)
+    ID              reduce using rule 28 (Stmt -> WhileStmt .)
+    PRINT           reduce using rule 28 (Stmt -> WhileStmt .)
+    RETURN          reduce using rule 28 (Stmt -> WhileStmt .)
+    BREAK           reduce using rule 28 (Stmt -> WhileStmt .)
+    CONTINUE        reduce using rule 28 (Stmt -> WhileStmt .)
+    IF              reduce using rule 28 (Stmt -> WhileStmt .)
+    WHILE           reduce using rule 28 (Stmt -> WhileStmt .)
+    INT             reduce using rule 28 (Stmt -> WhileStmt .)
+    CHAR            reduce using rule 28 (Stmt -> WhileStmt .)
+    VOID            reduce using rule 28 (Stmt -> WhileStmt .)
+
+
+state 28
+
+    (29) Stmt -> BreakStmt .
+
+    RBRACE          reduce using rule 29 (Stmt -> BreakStmt .)
+    ID              reduce using rule 29 (Stmt -> BreakStmt .)
+    PRINT           reduce using rule 29 (Stmt -> BreakStmt .)
+    RETURN          reduce using rule 29 (Stmt -> BreakStmt .)
+    BREAK           reduce using rule 29 (Stmt -> BreakStmt .)
+    CONTINUE        reduce using rule 29 (Stmt -> BreakStmt .)
+    IF              reduce using rule 29 (Stmt -> BreakStmt .)
+    WHILE           reduce using rule 29 (Stmt -> BreakStmt .)
+    INT             reduce using rule 29 (Stmt -> BreakStmt .)
+    CHAR            reduce using rule 29 (Stmt -> BreakStmt .)
+    VOID            reduce using rule 29 (Stmt -> BreakStmt .)
+
+
+state 29
+
+    (30) Stmt -> ContinueStmt .
+
+    RBRACE          reduce using rule 30 (Stmt -> ContinueStmt .)
+    ID              reduce using rule 30 (Stmt -> ContinueStmt .)
+    PRINT           reduce using rule 30 (Stmt -> ContinueStmt .)
+    RETURN          reduce using rule 30 (Stmt -> ContinueStmt .)
+    BREAK           reduce using rule 30 (Stmt -> ContinueStmt .)
+    CONTINUE        reduce using rule 30 (Stmt -> ContinueStmt .)
+    IF              reduce using rule 30 (Stmt -> ContinueStmt .)
+    WHILE           reduce using rule 30 (Stmt -> ContinueStmt .)
+    INT             reduce using rule 30 (Stmt -> ContinueStmt .)
+    CHAR            reduce using rule 30 (Stmt -> ContinueStmt .)
+    VOID            reduce using rule 30 (Stmt -> ContinueStmt .)
+
+
+state 30
+
+    (31) Stmt -> VarDeclStmt .
+
+    RBRACE          reduce using rule 31 (Stmt -> VarDeclStmt .)
+    ID              reduce using rule 31 (Stmt -> VarDeclStmt .)
+    PRINT           reduce using rule 31 (Stmt -> VarDeclStmt .)
+    RETURN          reduce using rule 31 (Stmt -> VarDeclStmt .)
+    BREAK           reduce using rule 31 (Stmt -> VarDeclStmt .)
+    CONTINUE        reduce using rule 31 (Stmt -> VarDeclStmt .)
+    IF              reduce using rule 31 (Stmt -> VarDeclStmt .)
+    WHILE           reduce using rule 31 (Stmt -> VarDeclStmt .)
+    INT             reduce using rule 31 (Stmt -> VarDeclStmt .)
+    CHAR            reduce using rule 31 (Stmt -> VarDeclStmt .)
+    VOID            reduce using rule 31 (Stmt -> VarDeclStmt .)
+
+
+state 31
+
+    (32) AssignStmt -> ID . ASSIGN Expr SEMI
+    (37) CallExpr -> ID . LPAREN Actuals RPAREN
+
+    ASSIGN          shift and go to state 44
+    LPAREN          shift and go to state 45
+
+
+state 32
+
+    (33) PrintStmt -> PRINT . LPAREN Actuals RPAREN SEMI
+
+    LPAREN          shift and go to state 46
+
+
+state 33
+
+    (36) CallStmt -> CallExpr . SEMI
+
+    SEMI            shift and go to state 47
+
+
+state 34
+
+    (40) ReturnStmt -> RETURN . Expr SEMI
+    (41) ReturnStmt -> RETURN . SEMI
+    (57) Expr -> . Expr PLUS Expr
+    (58) Expr -> . Expr MINUS Expr
+    (59) Expr -> . Expr TIMES Expr
+    (60) Expr -> . Expr DIVIDE Expr
+    (61) Expr -> . Expr LSHIFT Expr
+    (62) Expr -> . Expr RSHIFT Expr
+    (63) Expr -> . Expr LT Expr
+    (64) Expr -> . Expr GT Expr
+    (65) Expr -> . Expr EQ Expr
+    (66) Expr -> . Expr NE Expr
+    (67) Expr -> . Expr LE Expr
+    (68) Expr -> . Expr GE Expr
+    (69) Expr -> . Expr OR Expr
+    (70) Expr -> . Expr AND Expr
+    (71) Expr -> . NOT Expr
+    (72) Expr -> . MINUS Expr
+    (73) Expr -> . NUMBER
+    (74) Expr -> . LPAREN Expr RPAREN
+    (75) Expr -> . CallExpr
+    (76) Expr -> . ID
+    (37) CallExpr -> . ID LPAREN Actuals RPAREN
+
+    SEMI            shift and go to state 49
+    NOT             shift and go to state 51
+    MINUS           shift and go to state 50
+    NUMBER          shift and go to state 52
+    LPAREN          shift and go to state 53
+    ID              shift and go to state 55
+
+    Expr                           shift and go to state 48
+    CallExpr                       shift and go to state 54
+
+state 35
+
+    (42) IfStmt -> If . TestExpr Then StmtsBlock EndThen EndIf
+    (43) IfStmt -> If . TestExpr Then StmtsBlock EndThen Else StmtsBlock EndIf
+    (44) TestExpr -> . LPAREN Expr RPAREN
+
+    LPAREN          shift and go to state 57
+
+    TestExpr                       shift and go to state 56
+
+state 36
+
+    (51) WhileStmt -> While . TestExpr Do StmtsBlock EndWhile
+    (44) TestExpr -> . LPAREN Expr RPAREN
+
+    LPAREN          shift and go to state 57
+
+    TestExpr                       shift and go to state 58
+
+state 37
+
+    (55) BreakStmt -> BREAK . SEMI
+
+    SEMI            shift and go to state 59
+
+
+state 38
+
+    (56) ContinueStmt -> CONTINUE . SEMI
+
+    SEMI            shift and go to state 60
+
+
+state 39
+
+    (18) VarDeclStmt -> VarDecl . SEMI
+    (20) VarDecl -> VarDecl . COMMA ID
+
+    SEMI            shift and go to state 61
+    COMMA           shift and go to state 12
+
+
+state 40
+
+    (46) If -> IF .
+
+    LPAREN          reduce using rule 46 (If -> IF .)
+
+
+state 41
+
+    (52) While -> WHILE .
+
+    LPAREN          reduce using rule 52 (While -> WHILE .)
+
+
+state 42
+
+    (19) VarDecl -> Type . ID
+
+    ID              shift and go to state 62
+
+
+state 43
+
+    (7) FuncHead -> Type FuncName LPAREN newScope . Args RPAREN
+    (11) Args -> . Arg
+    (12) Args -> .
+    (16) Arg -> . Type ID
+    (17) Arg -> . Arg COMMA Type ID
+    (13) Type -> . INT
+    (14) Type -> . CHAR
+    (15) Type -> . VOID
+
+    RPAREN          reduce using rule 12 (Args -> .)
+    INT             shift and go to state 8
+    CHAR            shift and go to state 9
+    VOID            shift and go to state 10
+
+    Type                           shift and go to state 63
+    Args                           shift and go to state 64
+    Arg                            shift and go to state 65
+
+state 44
+
+    (32) AssignStmt -> ID ASSIGN . Expr SEMI
+    (57) Expr -> . Expr PLUS Expr
+    (58) Expr -> . Expr MINUS Expr
+    (59) Expr -> . Expr TIMES Expr
+    (60) Expr -> . Expr DIVIDE Expr
+    (61) Expr -> . Expr LSHIFT Expr
+    (62) Expr -> . Expr RSHIFT Expr
+    (63) Expr -> . Expr LT Expr
+    (64) Expr -> . Expr GT Expr
+    (65) Expr -> . Expr EQ Expr
+    (66) Expr -> . Expr NE Expr
+    (67) Expr -> . Expr LE Expr
+    (68) Expr -> . Expr GE Expr
+    (69) Expr -> . Expr OR Expr
+    (70) Expr -> . Expr AND Expr
+    (71) Expr -> . NOT Expr
+    (72) Expr -> . MINUS Expr
+    (73) Expr -> . NUMBER
+    (74) Expr -> . LPAREN Expr RPAREN
+    (75) Expr -> . CallExpr
+    (76) Expr -> . ID
+    (37) CallExpr -> . ID LPAREN Actuals RPAREN
+
+    NOT             shift and go to state 51
+    MINUS           shift and go to state 50
+    NUMBER          shift and go to state 52
+    LPAREN          shift and go to state 53
+    ID              shift and go to state 55
+
+    Expr                           shift and go to state 66
+    CallExpr                       shift and go to state 54
+
+state 45
+
+    (37) CallExpr -> ID LPAREN . Actuals RPAREN
+    (38) Actuals -> . Expr PActuals
+    (39) Actuals -> .
+    (57) Expr -> . Expr PLUS Expr
+    (58) Expr -> . Expr MINUS Expr
+    (59) Expr -> . Expr TIMES Expr
+    (60) Expr -> . Expr DIVIDE Expr
+    (61) Expr -> . Expr LSHIFT Expr
+    (62) Expr -> . Expr RSHIFT Expr
+    (63) Expr -> . Expr LT Expr
+    (64) Expr -> . Expr GT Expr
+    (65) Expr -> . Expr EQ Expr
+    (66) Expr -> . Expr NE Expr
+    (67) Expr -> . Expr LE Expr
+    (68) Expr -> . Expr GE Expr
+    (69) Expr -> . Expr OR Expr
+    (70) Expr -> . Expr AND Expr
+    (71) Expr -> . NOT Expr
+    (72) Expr -> . MINUS Expr
+    (73) Expr -> . NUMBER
+    (74) Expr -> . LPAREN Expr RPAREN
+    (75) Expr -> . CallExpr
+    (76) Expr -> . ID
+    (37) CallExpr -> . ID LPAREN Actuals RPAREN
+
+    RPAREN          reduce using rule 39 (Actuals -> .)
+    NOT             shift and go to state 51
+    MINUS           shift and go to state 50
+    NUMBER          shift and go to state 52
+    LPAREN          shift and go to state 53
+    ID              shift and go to state 55
+
+    Actuals                        shift and go to state 67
+    Expr                           shift and go to state 68
+    CallExpr                       shift and go to state 54
+
+state 46
+
+    (33) PrintStmt -> PRINT LPAREN . Actuals RPAREN SEMI
+    (38) Actuals -> . Expr PActuals
+    (39) Actuals -> .
+    (57) Expr -> . Expr PLUS Expr
+    (58) Expr -> . Expr MINUS Expr
+    (59) Expr -> . Expr TIMES Expr
+    (60) Expr -> . Expr DIVIDE Expr
+    (61) Expr -> . Expr LSHIFT Expr
+    (62) Expr -> . Expr RSHIFT Expr
+    (63) Expr -> . Expr LT Expr
+    (64) Expr -> . Expr GT Expr
+    (65) Expr -> . Expr EQ Expr
+    (66) Expr -> . Expr NE Expr
+    (67) Expr -> . Expr LE Expr
+    (68) Expr -> . Expr GE Expr
+    (69) Expr -> . Expr OR Expr
+    (70) Expr -> . Expr AND Expr
+    (71) Expr -> . NOT Expr
+    (72) Expr -> . MINUS Expr
+    (73) Expr -> . NUMBER
+    (74) Expr -> . LPAREN Expr RPAREN
+    (75) Expr -> . CallExpr
+    (76) Expr -> . ID
+    (37) CallExpr -> . ID LPAREN Actuals RPAREN
+
+    RPAREN          reduce using rule 39 (Actuals -> .)
+    NOT             shift and go to state 51
+    MINUS           shift and go to state 50
+    NUMBER          shift and go to state 52
+    LPAREN          shift and go to state 53
+    ID              shift and go to state 55
+
+    Actuals                        shift and go to state 69
+    Expr                           shift and go to state 68
+    CallExpr                       shift and go to state 54
+
+state 47
+
+    (36) CallStmt -> CallExpr SEMI .
+
+    RBRACE          reduce using rule 36 (CallStmt -> CallExpr SEMI .)
+    ID              reduce using rule 36 (CallStmt -> CallExpr SEMI .)
+    PRINT           reduce using rule 36 (CallStmt -> CallExpr SEMI .)
+    RETURN          reduce using rule 36 (CallStmt -> CallExpr SEMI .)
+    BREAK           reduce using rule 36 (CallStmt -> CallExpr SEMI .)
+    CONTINUE        reduce using rule 36 (CallStmt -> CallExpr SEMI .)
+    IF              reduce using rule 36 (CallStmt -> CallExpr SEMI .)
+    WHILE           reduce using rule 36 (CallStmt -> CallExpr SEMI .)
+    INT             reduce using rule 36 (CallStmt -> CallExpr SEMI .)
+    CHAR            reduce using rule 36 (CallStmt -> CallExpr SEMI .)
+    VOID            reduce using rule 36 (CallStmt -> CallExpr SEMI .)
+
+
+state 48
+
+    (40) ReturnStmt -> RETURN Expr . SEMI
+    (57) Expr -> Expr . PLUS Expr
+    (58) Expr -> Expr . MINUS Expr
+    (59) Expr -> Expr . TIMES Expr
+    (60) Expr -> Expr . DIVIDE Expr
+    (61) Expr -> Expr . LSHIFT Expr
+    (62) Expr -> Expr . RSHIFT Expr
+    (63) Expr -> Expr . LT Expr
+    (64) Expr -> Expr . GT Expr
+    (65) Expr -> Expr . EQ Expr
+    (66) Expr -> Expr . NE Expr
+    (67) Expr -> Expr . LE Expr
+    (68) Expr -> Expr . GE Expr
+    (69) Expr -> Expr . OR Expr
+    (70) Expr -> Expr . AND Expr
+
+    SEMI            shift and go to state 70
+    PLUS            shift and go to state 71
+    MINUS           shift and go to state 72
+    TIMES           shift and go to state 73
+    DIVIDE          shift and go to state 74
+    LSHIFT          shift and go to state 75
+    RSHIFT          shift and go to state 76
+    LT              shift and go to state 77
+    GT              shift and go to state 78
+    EQ              shift and go to state 79
+    NE              shift and go to state 80
+    LE              shift and go to state 81
+    GE              shift and go to state 82
+    OR              shift and go to state 83
+    AND             shift and go to state 84
+
+
+state 49
+
+    (41) ReturnStmt -> RETURN SEMI .
+
+    RBRACE          reduce using rule 41 (ReturnStmt -> RETURN SEMI .)
+    ID              reduce using rule 41 (ReturnStmt -> RETURN SEMI .)
+    PRINT           reduce using rule 41 (ReturnStmt -> RETURN SEMI .)
+    RETURN          reduce using rule 41 (ReturnStmt -> RETURN SEMI .)
+    BREAK           reduce using rule 41 (ReturnStmt -> RETURN SEMI .)
+    CONTINUE        reduce using rule 41 (ReturnStmt -> RETURN SEMI .)
+    IF              reduce using rule 41 (ReturnStmt -> RETURN SEMI .)
+    WHILE           reduce using rule 41 (ReturnStmt -> RETURN SEMI .)
+    INT             reduce using rule 41 (ReturnStmt -> RETURN SEMI .)
+    CHAR            reduce using rule 41 (ReturnStmt -> RETURN SEMI .)
+    VOID            reduce using rule 41 (ReturnStmt -> RETURN SEMI .)
+
+
+state 50
+
+    (72) Expr -> MINUS . Expr
+    (57) Expr -> . Expr PLUS Expr
+    (58) Expr -> . Expr MINUS Expr
+    (59) Expr -> . Expr TIMES Expr
+    (60) Expr -> . Expr DIVIDE Expr
+    (61) Expr -> . Expr LSHIFT Expr
+    (62) Expr -> . Expr RSHIFT Expr
+    (63) Expr -> . Expr LT Expr
+    (64) Expr -> . Expr GT Expr
+    (65) Expr -> . Expr EQ Expr
+    (66) Expr -> . Expr NE Expr
+    (67) Expr -> . Expr LE Expr
+    (68) Expr -> . Expr GE Expr
+    (69) Expr -> . Expr OR Expr
+    (70) Expr -> . Expr AND Expr
+    (71) Expr -> . NOT Expr
+    (72) Expr -> . MINUS Expr
+    (73) Expr -> . NUMBER
+    (74) Expr -> . LPAREN Expr RPAREN
+    (75) Expr -> . CallExpr
+    (76) Expr -> . ID
+    (37) CallExpr -> . ID LPAREN Actuals RPAREN
+
+    NOT             shift and go to state 51
+    MINUS           shift and go to state 50
+    NUMBER          shift and go to state 52
+    LPAREN          shift and go to state 53
+    ID              shift and go to state 55
+
+    Expr                           shift and go to state 85
+    CallExpr                       shift and go to state 54
+
+state 51
+
+    (71) Expr -> NOT . Expr
+    (57) Expr -> . Expr PLUS Expr
+    (58) Expr -> . Expr MINUS Expr
+    (59) Expr -> . Expr TIMES Expr
+    (60) Expr -> . Expr DIVIDE Expr
+    (61) Expr -> . Expr LSHIFT Expr
+    (62) Expr -> . Expr RSHIFT Expr
+    (63) Expr -> . Expr LT Expr
+    (64) Expr -> . Expr GT Expr
+    (65) Expr -> . Expr EQ Expr
+    (66) Expr -> . Expr NE Expr
+    (67) Expr -> . Expr LE Expr
+    (68) Expr -> . Expr GE Expr
+    (69) Expr -> . Expr OR Expr
+    (70) Expr -> . Expr AND Expr
+    (71) Expr -> . NOT Expr
+    (72) Expr -> . MINUS Expr
+    (73) Expr -> . NUMBER
+    (74) Expr -> . LPAREN Expr RPAREN
+    (75) Expr -> . CallExpr
+    (76) Expr -> . ID
+    (37) CallExpr -> . ID LPAREN Actuals RPAREN
+
+    NOT             shift and go to state 51
+    MINUS           shift and go to state 50
+    NUMBER          shift and go to state 52
+    LPAREN          shift and go to state 53
+    ID              shift and go to state 55
+
+    Expr                           shift and go to state 86
+    CallExpr                       shift and go to state 54
+
+state 52
+
+    (73) Expr -> NUMBER .
+
+    SEMI            reduce using rule 73 (Expr -> NUMBER .)
+    PLUS            reduce using rule 73 (Expr -> NUMBER .)
+    MINUS           reduce using rule 73 (Expr -> NUMBER .)
+    TIMES           reduce using rule 73 (Expr -> NUMBER .)
+    DIVIDE          reduce using rule 73 (Expr -> NUMBER .)
+    LSHIFT          reduce using rule 73 (Expr -> NUMBER .)
+    RSHIFT          reduce using rule 73 (Expr -> NUMBER .)
+    LT              reduce using rule 73 (Expr -> NUMBER .)
+    GT              reduce using rule 73 (Expr -> NUMBER .)
+    EQ              reduce using rule 73 (Expr -> NUMBER .)
+    NE              reduce using rule 73 (Expr -> NUMBER .)
+    LE              reduce using rule 73 (Expr -> NUMBER .)
+    GE              reduce using rule 73 (Expr -> NUMBER .)
+    OR              reduce using rule 73 (Expr -> NUMBER .)
+    AND             reduce using rule 73 (Expr -> NUMBER .)
+    COMMA           reduce using rule 73 (Expr -> NUMBER .)
+    RPAREN          reduce using rule 73 (Expr -> NUMBER .)
+
+
+state 53
+
+    (74) Expr -> LPAREN . Expr RPAREN
+    (57) Expr -> . Expr PLUS Expr
+    (58) Expr -> . Expr MINUS Expr
+    (59) Expr -> . Expr TIMES Expr
+    (60) Expr -> . Expr DIVIDE Expr
+    (61) Expr -> . Expr LSHIFT Expr
+    (62) Expr -> . Expr RSHIFT Expr
+    (63) Expr -> . Expr LT Expr
+    (64) Expr -> . Expr GT Expr
+    (65) Expr -> . Expr EQ Expr
+    (66) Expr -> . Expr NE Expr
+    (67) Expr -> . Expr LE Expr
+    (68) Expr -> . Expr GE Expr
+    (69) Expr -> . Expr OR Expr
+    (70) Expr -> . Expr AND Expr
+    (71) Expr -> . NOT Expr
+    (72) Expr -> . MINUS Expr
+    (73) Expr -> . NUMBER
+    (74) Expr -> . LPAREN Expr RPAREN
+    (75) Expr -> . CallExpr
+    (76) Expr -> . ID
+    (37) CallExpr -> . ID LPAREN Actuals RPAREN
+
+    NOT             shift and go to state 51
+    MINUS           shift and go to state 50
+    NUMBER          shift and go to state 52
+    LPAREN          shift and go to state 53
+    ID              shift and go to state 55
+
+    Expr                           shift and go to state 87
+    CallExpr                       shift and go to state 54
+
+state 54
+
+    (75) Expr -> CallExpr .
+
+    SEMI            reduce using rule 75 (Expr -> CallExpr .)
+    PLUS            reduce using rule 75 (Expr -> CallExpr .)
+    MINUS           reduce using rule 75 (Expr -> CallExpr .)
+    TIMES           reduce using rule 75 (Expr -> CallExpr .)
+    DIVIDE          reduce using rule 75 (Expr -> CallExpr .)
+    LSHIFT          reduce using rule 75 (Expr -> CallExpr .)
+    RSHIFT          reduce using rule 75 (Expr -> CallExpr .)
+    LT              reduce using rule 75 (Expr -> CallExpr .)
+    GT              reduce using rule 75 (Expr -> CallExpr .)
+    EQ              reduce using rule 75 (Expr -> CallExpr .)
+    NE              reduce using rule 75 (Expr -> CallExpr .)
+    LE              reduce using rule 75 (Expr -> CallExpr .)
+    GE              reduce using rule 75 (Expr -> CallExpr .)
+    OR              reduce using rule 75 (Expr -> CallExpr .)
+    AND             reduce using rule 75 (Expr -> CallExpr .)
+    COMMA           reduce using rule 75 (Expr -> CallExpr .)
+    RPAREN          reduce using rule 75 (Expr -> CallExpr .)
+
+
+state 55
+
+    (76) Expr -> ID .
+    (37) CallExpr -> ID . LPAREN Actuals RPAREN
+
+    SEMI            reduce using rule 76 (Expr -> ID .)
+    PLUS            reduce using rule 76 (Expr -> ID .)
+    MINUS           reduce using rule 76 (Expr -> ID .)
+    TIMES           reduce using rule 76 (Expr -> ID .)
+    DIVIDE          reduce using rule 76 (Expr -> ID .)
+    LSHIFT          reduce using rule 76 (Expr -> ID .)
+    RSHIFT          reduce using rule 76 (Expr -> ID .)
+    LT              reduce using rule 76 (Expr -> ID .)
+    GT              reduce using rule 76 (Expr -> ID .)
+    EQ              reduce using rule 76 (Expr -> ID .)
+    NE              reduce using rule 76 (Expr -> ID .)
+    LE              reduce using rule 76 (Expr -> ID .)
+    GE              reduce using rule 76 (Expr -> ID .)
+    OR              reduce using rule 76 (Expr -> ID .)
+    AND             reduce using rule 76 (Expr -> ID .)
+    COMMA           reduce using rule 76 (Expr -> ID .)
+    RPAREN          reduce using rule 76 (Expr -> ID .)
+    LPAREN          shift and go to state 45
+
+
+state 56
+
+    (42) IfStmt -> If TestExpr . Then StmtsBlock EndThen EndIf
+    (43) IfStmt -> If TestExpr . Then StmtsBlock EndThen Else StmtsBlock EndIf
+    (48) Then -> .
+
+    LBRACE          reduce using rule 48 (Then -> .)
+
+    Then                           shift and go to state 88
+
+state 57
+
+    (44) TestExpr -> LPAREN . Expr RPAREN
+    (57) Expr -> . Expr PLUS Expr
+    (58) Expr -> . Expr MINUS Expr
+    (59) Expr -> . Expr TIMES Expr
+    (60) Expr -> . Expr DIVIDE Expr
+    (61) Expr -> . Expr LSHIFT Expr
+    (62) Expr -> . Expr RSHIFT Expr
+    (63) Expr -> . Expr LT Expr
+    (64) Expr -> . Expr GT Expr
+    (65) Expr -> . Expr EQ Expr
+    (66) Expr -> . Expr NE Expr
+    (67) Expr -> . Expr LE Expr
+    (68) Expr -> . Expr GE Expr
+    (69) Expr -> . Expr OR Expr
+    (70) Expr -> . Expr AND Expr
+    (71) Expr -> . NOT Expr
+    (72) Expr -> . MINUS Expr
+    (73) Expr -> . NUMBER
+    (74) Expr -> . LPAREN Expr RPAREN
+    (75) Expr -> . CallExpr
+    (76) Expr -> . ID
+    (37) CallExpr -> . ID LPAREN Actuals RPAREN
+
+    NOT             shift and go to state 51
+    MINUS           shift and go to state 50
+    NUMBER          shift and go to state 52
+    LPAREN          shift and go to state 53
+    ID              shift and go to state 55
+
+    Expr                           shift and go to state 89
+    CallExpr                       shift and go to state 54
+
+state 58
+
+    (51) WhileStmt -> While TestExpr . Do StmtsBlock EndWhile
+    (53) Do -> .
+
+    LBRACE          reduce using rule 53 (Do -> .)
+
+    Do                             shift and go to state 90
+
+state 59
+
+    (55) BreakStmt -> BREAK SEMI .
+
+    RBRACE          reduce using rule 55 (BreakStmt -> BREAK SEMI .)
+    ID              reduce using rule 55 (BreakStmt -> BREAK SEMI .)
+    PRINT           reduce using rule 55 (BreakStmt -> BREAK SEMI .)
+    RETURN          reduce using rule 55 (BreakStmt -> BREAK SEMI .)
+    BREAK           reduce using rule 55 (BreakStmt -> BREAK SEMI .)
+    CONTINUE        reduce using rule 55 (BreakStmt -> BREAK SEMI .)
+    IF              reduce using rule 55 (BreakStmt -> BREAK SEMI .)
+    WHILE           reduce using rule 55 (BreakStmt -> BREAK SEMI .)
+    INT             reduce using rule 55 (BreakStmt -> BREAK SEMI .)
+    CHAR            reduce using rule 55 (BreakStmt -> BREAK SEMI .)
+    VOID            reduce using rule 55 (BreakStmt -> BREAK SEMI .)
+
+
+state 60
+
+    (56) ContinueStmt -> CONTINUE SEMI .
+
+    RBRACE          reduce using rule 56 (ContinueStmt -> CONTINUE SEMI .)
+    ID              reduce using rule 56 (ContinueStmt -> CONTINUE SEMI .)
+    PRINT           reduce using rule 56 (ContinueStmt -> CONTINUE SEMI .)
+    RETURN          reduce using rule 56 (ContinueStmt -> CONTINUE SEMI .)
+    BREAK           reduce using rule 56 (ContinueStmt -> CONTINUE SEMI .)
+    CONTINUE        reduce using rule 56 (ContinueStmt -> CONTINUE SEMI .)
+    IF              reduce using rule 56 (ContinueStmt -> CONTINUE SEMI .)
+    WHILE           reduce using rule 56 (ContinueStmt -> CONTINUE SEMI .)
+    INT             reduce using rule 56 (ContinueStmt -> CONTINUE SEMI .)
+    CHAR            reduce using rule 56 (ContinueStmt -> CONTINUE SEMI .)
+    VOID            reduce using rule 56 (ContinueStmt -> CONTINUE SEMI .)
+
+
+state 61
+
+    (18) VarDeclStmt -> VarDecl SEMI .
+
+    RBRACE          reduce using rule 18 (VarDeclStmt -> VarDecl SEMI .)
+    ID              reduce using rule 18 (VarDeclStmt -> VarDecl SEMI .)
+    PRINT           reduce using rule 18 (VarDeclStmt -> VarDecl SEMI .)
+    RETURN          reduce using rule 18 (VarDeclStmt -> VarDecl SEMI .)
+    BREAK           reduce using rule 18 (VarDeclStmt -> VarDecl SEMI .)
+    CONTINUE        reduce using rule 18 (VarDeclStmt -> VarDecl SEMI .)
+    IF              reduce using rule 18 (VarDeclStmt -> VarDecl SEMI .)
+    WHILE           reduce using rule 18 (VarDeclStmt -> VarDecl SEMI .)
+    INT             reduce using rule 18 (VarDeclStmt -> VarDecl SEMI .)
+    CHAR            reduce using rule 18 (VarDeclStmt -> VarDecl SEMI .)
+    VOID            reduce using rule 18 (VarDeclStmt -> VarDecl SEMI .)
+
+
+state 62
+
+    (19) VarDecl -> Type ID .
+
+    SEMI            reduce using rule 19 (VarDecl -> Type ID .)
+    COMMA           reduce using rule 19 (VarDecl -> Type ID .)
+
+
+state 63
+
+    (16) Arg -> Type . ID
+
+    ID              shift and go to state 91
+
+
+state 64
+
+    (7) FuncHead -> Type FuncName LPAREN newScope Args . RPAREN
+
+    RPAREN          shift and go to state 92
+
+
+state 65
+
+    (11) Args -> Arg .
+    (17) Arg -> Arg . COMMA Type ID
+
+    RPAREN          reduce using rule 11 (Args -> Arg .)
+    COMMA           shift and go to state 93
+
+
+state 66
+
+    (32) AssignStmt -> ID ASSIGN Expr . SEMI
+    (57) Expr -> Expr . PLUS Expr
+    (58) Expr -> Expr . MINUS Expr
+    (59) Expr -> Expr . TIMES Expr
+    (60) Expr -> Expr . DIVIDE Expr
+    (61) Expr -> Expr . LSHIFT Expr
+    (62) Expr -> Expr . RSHIFT Expr
+    (63) Expr -> Expr . LT Expr
+    (64) Expr -> Expr . GT Expr
+    (65) Expr -> Expr . EQ Expr
+    (66) Expr -> Expr . NE Expr
+    (67) Expr -> Expr . LE Expr
+    (68) Expr -> Expr . GE Expr
+    (69) Expr -> Expr . OR Expr
+    (70) Expr -> Expr . AND Expr
+
+    SEMI            shift and go to state 94
+    PLUS            shift and go to state 71
+    MINUS           shift and go to state 72
+    TIMES           shift and go to state 73
+    DIVIDE          shift and go to state 74
+    LSHIFT          shift and go to state 75
+    RSHIFT          shift and go to state 76
+    LT              shift and go to state 77
+    GT              shift and go to state 78
+    EQ              shift and go to state 79
+    NE              shift and go to state 80
+    LE              shift and go to state 81
+    GE              shift and go to state 82
+    OR              shift and go to state 83
+    AND             shift and go to state 84
+
+
+state 67
+
+    (37) CallExpr -> ID LPAREN Actuals . RPAREN
+
+    RPAREN          shift and go to state 95
+
+
+state 68
+
+    (38) Actuals -> Expr . PActuals
+    (57) Expr -> Expr . PLUS Expr
+    (58) Expr -> Expr . MINUS Expr
+    (59) Expr -> Expr . TIMES Expr
+    (60) Expr -> Expr . DIVIDE Expr
+    (61) Expr -> Expr . LSHIFT Expr
+    (62) Expr -> Expr . RSHIFT Expr
+    (63) Expr -> Expr . LT Expr
+    (64) Expr -> Expr . GT Expr
+    (65) Expr -> Expr . EQ Expr
+    (66) Expr -> Expr . NE Expr
+    (67) Expr -> Expr . LE Expr
+    (68) Expr -> Expr . GE Expr
+    (69) Expr -> Expr . OR Expr
+    (70) Expr -> Expr . AND Expr
+    (34) PActuals -> . PActuals COMMA Expr
+    (35) PActuals -> .
+
+    PLUS            shift and go to state 71
+    MINUS           shift and go to state 72
+    TIMES           shift and go to state 73
+    DIVIDE          shift and go to state 74
+    LSHIFT          shift and go to state 75
+    RSHIFT          shift and go to state 76
+    LT              shift and go to state 77
+    GT              shift and go to state 78
+    EQ              shift and go to state 79
+    NE              shift and go to state 80
+    LE              shift and go to state 81
+    GE              shift and go to state 82
+    OR              shift and go to state 83
+    AND             shift and go to state 84
+    COMMA           reduce using rule 35 (PActuals -> .)
+    RPAREN          reduce using rule 35 (PActuals -> .)
+
+    PActuals                       shift and go to state 96
+
+state 69
+
+    (33) PrintStmt -> PRINT LPAREN Actuals . RPAREN SEMI
+
+    RPAREN          shift and go to state 97
+
+
+state 70
+
+    (40) ReturnStmt -> RETURN Expr SEMI .
+
+    RBRACE          reduce using rule 40 (ReturnStmt -> RETURN Expr SEMI .)
+    ID              reduce using rule 40 (ReturnStmt -> RETURN Expr SEMI .)
+    PRINT           reduce using rule 40 (ReturnStmt -> RETURN Expr SEMI .)
+    RETURN          reduce using rule 40 (ReturnStmt -> RETURN Expr SEMI .)
+    BREAK           reduce using rule 40 (ReturnStmt -> RETURN Expr SEMI .)
+    CONTINUE        reduce using rule 40 (ReturnStmt -> RETURN Expr SEMI .)
+    IF              reduce using rule 40 (ReturnStmt -> RETURN Expr SEMI .)
+    WHILE           reduce using rule 40 (ReturnStmt -> RETURN Expr SEMI .)
+    INT             reduce using rule 40 (ReturnStmt -> RETURN Expr SEMI .)
+    CHAR            reduce using rule 40 (ReturnStmt -> RETURN Expr SEMI .)
+    VOID            reduce using rule 40 (ReturnStmt -> RETURN Expr SEMI .)
+
+
+state 71
+
+    (57) Expr -> Expr PLUS . Expr
+    (57) Expr -> . Expr PLUS Expr
+    (58) Expr -> . Expr MINUS Expr
+    (59) Expr -> . Expr TIMES Expr
+    (60) Expr -> . Expr DIVIDE Expr
+    (61) Expr -> . Expr LSHIFT Expr
+    (62) Expr -> . Expr RSHIFT Expr
+    (63) Expr -> . Expr LT Expr
+    (64) Expr -> . Expr GT Expr
+    (65) Expr -> . Expr EQ Expr
+    (66) Expr -> . Expr NE Expr
+    (67) Expr -> . Expr LE Expr
+    (68) Expr -> . Expr GE Expr
+    (69) Expr -> . Expr OR Expr
+    (70) Expr -> . Expr AND Expr
+    (71) Expr -> . NOT Expr
+    (72) Expr -> . MINUS Expr
+    (73) Expr -> . NUMBER
+    (74) Expr -> . LPAREN Expr RPAREN
+    (75) Expr -> . CallExpr
+    (76) Expr -> . ID
+    (37) CallExpr -> . ID LPAREN Actuals RPAREN
+
+    NOT             shift and go to state 51
+    MINUS           shift and go to state 50
+    NUMBER          shift and go to state 52
+    LPAREN          shift and go to state 53
+    ID              shift and go to state 55
+
+    Expr                           shift and go to state 98
+    CallExpr                       shift and go to state 54
+
+state 72
+
+    (58) Expr -> Expr MINUS . Expr
+    (57) Expr -> . Expr PLUS Expr
+    (58) Expr -> . Expr MINUS Expr
+    (59) Expr -> . Expr TIMES Expr
+    (60) Expr -> . Expr DIVIDE Expr
+    (61) Expr -> . Expr LSHIFT Expr
+    (62) Expr -> . Expr RSHIFT Expr
+    (63) Expr -> . Expr LT Expr
+    (64) Expr -> . Expr GT Expr
+    (65) Expr -> . Expr EQ Expr
+    (66) Expr -> . Expr NE Expr
+    (67) Expr -> . Expr LE Expr
+    (68) Expr -> . Expr GE Expr
+    (69) Expr -> . Expr OR Expr
+    (70) Expr -> . Expr AND Expr
+    (71) Expr -> . NOT Expr
+    (72) Expr -> . MINUS Expr
+    (73) Expr -> . NUMBER
+    (74) Expr -> . LPAREN Expr RPAREN
+    (75) Expr -> . CallExpr
+    (76) Expr -> . ID
+    (37) CallExpr -> . ID LPAREN Actuals RPAREN
+
+    NOT             shift and go to state 51
+    MINUS           shift and go to state 50
+    NUMBER          shift and go to state 52
+    LPAREN          shift and go to state 53
+    ID              shift and go to state 55
+
+    Expr                           shift and go to state 99
+    CallExpr                       shift and go to state 54
+
+state 73
+
+    (59) Expr -> Expr TIMES . Expr
+    (57) Expr -> . Expr PLUS Expr
+    (58) Expr -> . Expr MINUS Expr
+    (59) Expr -> . Expr TIMES Expr
+    (60) Expr -> . Expr DIVIDE Expr
+    (61) Expr -> . Expr LSHIFT Expr
+    (62) Expr -> . Expr RSHIFT Expr
+    (63) Expr -> . Expr LT Expr
+    (64) Expr -> . Expr GT Expr
+    (65) Expr -> . Expr EQ Expr
+    (66) Expr -> . Expr NE Expr
+    (67) Expr -> . Expr LE Expr
+    (68) Expr -> . Expr GE Expr
+    (69) Expr -> . Expr OR Expr
+    (70) Expr -> . Expr AND Expr
+    (71) Expr -> . NOT Expr
+    (72) Expr -> . MINUS Expr
+    (73) Expr -> . NUMBER
+    (74) Expr -> . LPAREN Expr RPAREN
+    (75) Expr -> . CallExpr
+    (76) Expr -> . ID
+    (37) CallExpr -> . ID LPAREN Actuals RPAREN
+
+    NOT             shift and go to state 51
+    MINUS           shift and go to state 50
+    NUMBER          shift and go to state 52
+    LPAREN          shift and go to state 53
+    ID              shift and go to state 55
+
+    Expr                           shift and go to state 100
+    CallExpr                       shift and go to state 54
+
+state 74
+
+    (60) Expr -> Expr DIVIDE . Expr
+    (57) Expr -> . Expr PLUS Expr
+    (58) Expr -> . Expr MINUS Expr
+    (59) Expr -> . Expr TIMES Expr
+    (60) Expr -> . Expr DIVIDE Expr
+    (61) Expr -> . Expr LSHIFT Expr
+    (62) Expr -> . Expr RSHIFT Expr
+    (63) Expr -> . Expr LT Expr
+    (64) Expr -> . Expr GT Expr
+    (65) Expr -> . Expr EQ Expr
+    (66) Expr -> . Expr NE Expr
+    (67) Expr -> . Expr LE Expr
+    (68) Expr -> . Expr GE Expr
+    (69) Expr -> . Expr OR Expr
+    (70) Expr -> . Expr AND Expr
+    (71) Expr -> . NOT Expr
+    (72) Expr -> . MINUS Expr
+    (73) Expr -> . NUMBER
+    (74) Expr -> . LPAREN Expr RPAREN
+    (75) Expr -> . CallExpr
+    (76) Expr -> . ID
+    (37) CallExpr -> . ID LPAREN Actuals RPAREN
+
+    NOT             shift and go to state 51
+    MINUS           shift and go to state 50
+    NUMBER          shift and go to state 52
+    LPAREN          shift and go to state 53
+    ID              shift and go to state 55
+
+    Expr                           shift and go to state 101
+    CallExpr                       shift and go to state 54
+
+state 75
+
+    (61) Expr -> Expr LSHIFT . Expr
+    (57) Expr -> . Expr PLUS Expr
+    (58) Expr -> . Expr MINUS Expr
+    (59) Expr -> . Expr TIMES Expr
+    (60) Expr -> . Expr DIVIDE Expr
+    (61) Expr -> . Expr LSHIFT Expr
+    (62) Expr -> . Expr RSHIFT Expr
+    (63) Expr -> . Expr LT Expr
+    (64) Expr -> . Expr GT Expr
+    (65) Expr -> . Expr EQ Expr
+    (66) Expr -> . Expr NE Expr
+    (67) Expr -> . Expr LE Expr
+    (68) Expr -> . Expr GE Expr
+    (69) Expr -> . Expr OR Expr
+    (70) Expr -> . Expr AND Expr
+    (71) Expr -> . NOT Expr
+    (72) Expr -> . MINUS Expr
+    (73) Expr -> . NUMBER
+    (74) Expr -> . LPAREN Expr RPAREN
+    (75) Expr -> . CallExpr
+    (76) Expr -> . ID
+    (37) CallExpr -> . ID LPAREN Actuals RPAREN
+
+    NOT             shift and go to state 51
+    MINUS           shift and go to state 50
+    NUMBER          shift and go to state 52
+    LPAREN          shift and go to state 53
+    ID              shift and go to state 55
+
+    Expr                           shift and go to state 102
+    CallExpr                       shift and go to state 54
+
+state 76
+
+    (62) Expr -> Expr RSHIFT . Expr
+    (57) Expr -> . Expr PLUS Expr
+    (58) Expr -> . Expr MINUS Expr
+    (59) Expr -> . Expr TIMES Expr
+    (60) Expr -> . Expr DIVIDE Expr
+    (61) Expr -> . Expr LSHIFT Expr
+    (62) Expr -> . Expr RSHIFT Expr
+    (63) Expr -> . Expr LT Expr
+    (64) Expr -> . Expr GT Expr
+    (65) Expr -> . Expr EQ Expr
+    (66) Expr -> . Expr NE Expr
+    (67) Expr -> . Expr LE Expr
+    (68) Expr -> . Expr GE Expr
+    (69) Expr -> . Expr OR Expr
+    (70) Expr -> . Expr AND Expr
+    (71) Expr -> . NOT Expr
+    (72) Expr -> . MINUS Expr
+    (73) Expr -> . NUMBER
+    (74) Expr -> . LPAREN Expr RPAREN
+    (75) Expr -> . CallExpr
+    (76) Expr -> . ID
+    (37) CallExpr -> . ID LPAREN Actuals RPAREN
+
+    NOT             shift and go to state 51
+    MINUS           shift and go to state 50
+    NUMBER          shift and go to state 52
+    LPAREN          shift and go to state 53
+    ID              shift and go to state 55
+
+    Expr                           shift and go to state 103
+    CallExpr                       shift and go to state 54
+
+state 77
+
+    (63) Expr -> Expr LT . Expr
+    (57) Expr -> . Expr PLUS Expr
+    (58) Expr -> . Expr MINUS Expr
+    (59) Expr -> . Expr TIMES Expr
+    (60) Expr -> . Expr DIVIDE Expr
+    (61) Expr -> . Expr LSHIFT Expr
+    (62) Expr -> . Expr RSHIFT Expr
+    (63) Expr -> . Expr LT Expr
+    (64) Expr -> . Expr GT Expr
+    (65) Expr -> . Expr EQ Expr
+    (66) Expr -> . Expr NE Expr
+    (67) Expr -> . Expr LE Expr
+    (68) Expr -> . Expr GE Expr
+    (69) Expr -> . Expr OR Expr
+    (70) Expr -> . Expr AND Expr
+    (71) Expr -> . NOT Expr
+    (72) Expr -> . MINUS Expr
+    (73) Expr -> . NUMBER
+    (74) Expr -> . LPAREN Expr RPAREN
+    (75) Expr -> . CallExpr
+    (76) Expr -> . ID
+    (37) CallExpr -> . ID LPAREN Actuals RPAREN
+
+    NOT             shift and go to state 51
+    MINUS           shift and go to state 50
+    NUMBER          shift and go to state 52
+    LPAREN          shift and go to state 53
+    ID              shift and go to state 55
+
+    Expr                           shift and go to state 104
+    CallExpr                       shift and go to state 54
+
+state 78
+
+    (64) Expr -> Expr GT . Expr
+    (57) Expr -> . Expr PLUS Expr
+    (58) Expr -> . Expr MINUS Expr
+    (59) Expr -> . Expr TIMES Expr
+    (60) Expr -> . Expr DIVIDE Expr
+    (61) Expr -> . Expr LSHIFT Expr
+    (62) Expr -> . Expr RSHIFT Expr
+    (63) Expr -> . Expr LT Expr
+    (64) Expr -> . Expr GT Expr
+    (65) Expr -> . Expr EQ Expr
+    (66) Expr -> . Expr NE Expr
+    (67) Expr -> . Expr LE Expr
+    (68) Expr -> . Expr GE Expr
+    (69) Expr -> . Expr OR Expr
+    (70) Expr -> . Expr AND Expr
+    (71) Expr -> . NOT Expr
+    (72) Expr -> . MINUS Expr
+    (73) Expr -> . NUMBER
+    (74) Expr -> . LPAREN Expr RPAREN
+    (75) Expr -> . CallExpr
+    (76) Expr -> . ID
+    (37) CallExpr -> . ID LPAREN Actuals RPAREN
+
+    NOT             shift and go to state 51
+    MINUS           shift and go to state 50
+    NUMBER          shift and go to state 52
+    LPAREN          shift and go to state 53
+    ID              shift and go to state 55
+
+    Expr                           shift and go to state 105
+    CallExpr                       shift and go to state 54
+
+state 79
+
+    (65) Expr -> Expr EQ . Expr
+    (57) Expr -> . Expr PLUS Expr
+    (58) Expr -> . Expr MINUS Expr
+    (59) Expr -> . Expr TIMES Expr
+    (60) Expr -> . Expr DIVIDE Expr
+    (61) Expr -> . Expr LSHIFT Expr
+    (62) Expr -> . Expr RSHIFT Expr
+    (63) Expr -> . Expr LT Expr
+    (64) Expr -> . Expr GT Expr
+    (65) Expr -> . Expr EQ Expr
+    (66) Expr -> . Expr NE Expr
+    (67) Expr -> . Expr LE Expr
+    (68) Expr -> . Expr GE Expr
+    (69) Expr -> . Expr OR Expr
+    (70) Expr -> . Expr AND Expr
+    (71) Expr -> . NOT Expr
+    (72) Expr -> . MINUS Expr
+    (73) Expr -> . NUMBER
+    (74) Expr -> . LPAREN Expr RPAREN
+    (75) Expr -> . CallExpr
+    (76) Expr -> . ID
+    (37) CallExpr -> . ID LPAREN Actuals RPAREN
+
+    NOT             shift and go to state 51
+    MINUS           shift and go to state 50
+    NUMBER          shift and go to state 52
+    LPAREN          shift and go to state 53
+    ID              shift and go to state 55
+
+    Expr                           shift and go to state 106
+    CallExpr                       shift and go to state 54
+
+state 80
+
+    (66) Expr -> Expr NE . Expr
+    (57) Expr -> . Expr PLUS Expr
+    (58) Expr -> . Expr MINUS Expr
+    (59) Expr -> . Expr TIMES Expr
+    (60) Expr -> . Expr DIVIDE Expr
+    (61) Expr -> . Expr LSHIFT Expr
+    (62) Expr -> . Expr RSHIFT Expr
+    (63) Expr -> . Expr LT Expr
+    (64) Expr -> . Expr GT Expr
+    (65) Expr -> . Expr EQ Expr
+    (66) Expr -> . Expr NE Expr
+    (67) Expr -> . Expr LE Expr
+    (68) Expr -> . Expr GE Expr
+    (69) Expr -> . Expr OR Expr
+    (70) Expr -> . Expr AND Expr
+    (71) Expr -> . NOT Expr
+    (72) Expr -> . MINUS Expr
+    (73) Expr -> . NUMBER
+    (74) Expr -> . LPAREN Expr RPAREN
+    (75) Expr -> . CallExpr
+    (76) Expr -> . ID
+    (37) CallExpr -> . ID LPAREN Actuals RPAREN
+
+    NOT             shift and go to state 51
+    MINUS           shift and go to state 50
+    NUMBER          shift and go to state 52
+    LPAREN          shift and go to state 53
+    ID              shift and go to state 55
+
+    Expr                           shift and go to state 107
+    CallExpr                       shift and go to state 54
+
+state 81
+
+    (67) Expr -> Expr LE . Expr
+    (57) Expr -> . Expr PLUS Expr
+    (58) Expr -> . Expr MINUS Expr
+    (59) Expr -> . Expr TIMES Expr
+    (60) Expr -> . Expr DIVIDE Expr
+    (61) Expr -> . Expr LSHIFT Expr
+    (62) Expr -> . Expr RSHIFT Expr
+    (63) Expr -> . Expr LT Expr
+    (64) Expr -> . Expr GT Expr
+    (65) Expr -> . Expr EQ Expr
+    (66) Expr -> . Expr NE Expr
+    (67) Expr -> . Expr LE Expr
+    (68) Expr -> . Expr GE Expr
+    (69) Expr -> . Expr OR Expr
+    (70) Expr -> . Expr AND Expr
+    (71) Expr -> . NOT Expr
+    (72) Expr -> . MINUS Expr
+    (73) Expr -> . NUMBER
+    (74) Expr -> . LPAREN Expr RPAREN
+    (75) Expr -> . CallExpr
+    (76) Expr -> . ID
+    (37) CallExpr -> . ID LPAREN Actuals RPAREN
+
+    NOT             shift and go to state 51
+    MINUS           shift and go to state 50
+    NUMBER          shift and go to state 52
+    LPAREN          shift and go to state 53
+    ID              shift and go to state 55
+
+    Expr                           shift and go to state 108
+    CallExpr                       shift and go to state 54
+
+state 82
+
+    (68) Expr -> Expr GE . Expr
+    (57) Expr -> . Expr PLUS Expr
+    (58) Expr -> . Expr MINUS Expr
+    (59) Expr -> . Expr TIMES Expr
+    (60) Expr -> . Expr DIVIDE Expr
+    (61) Expr -> . Expr LSHIFT Expr
+    (62) Expr -> . Expr RSHIFT Expr
+    (63) Expr -> . Expr LT Expr
+    (64) Expr -> . Expr GT Expr
+    (65) Expr -> . Expr EQ Expr
+    (66) Expr -> . Expr NE Expr
+    (67) Expr -> . Expr LE Expr
+    (68) Expr -> . Expr GE Expr
+    (69) Expr -> . Expr OR Expr
+    (70) Expr -> . Expr AND Expr
+    (71) Expr -> . NOT Expr
+    (72) Expr -> . MINUS Expr
+    (73) Expr -> . NUMBER
+    (74) Expr -> . LPAREN Expr RPAREN
+    (75) Expr -> . CallExpr
+    (76) Expr -> . ID
+    (37) CallExpr -> . ID LPAREN Actuals RPAREN
+
+    NOT             shift and go to state 51
+    MINUS           shift and go to state 50
+    NUMBER          shift and go to state 52
+    LPAREN          shift and go to state 53
+    ID              shift and go to state 55
+
+    Expr                           shift and go to state 109
+    CallExpr                       shift and go to state 54
+
+state 83
+
+    (69) Expr -> Expr OR . Expr
+    (57) Expr -> . Expr PLUS Expr
+    (58) Expr -> . Expr MINUS Expr
+    (59) Expr -> . Expr TIMES Expr
+    (60) Expr -> . Expr DIVIDE Expr
+    (61) Expr -> . Expr LSHIFT Expr
+    (62) Expr -> . Expr RSHIFT Expr
+    (63) Expr -> . Expr LT Expr
+    (64) Expr -> . Expr GT Expr
+    (65) Expr -> . Expr EQ Expr
+    (66) Expr -> . Expr NE Expr
+    (67) Expr -> . Expr LE Expr
+    (68) Expr -> . Expr GE Expr
+    (69) Expr -> . Expr OR Expr
+    (70) Expr -> . Expr AND Expr
+    (71) Expr -> . NOT Expr
+    (72) Expr -> . MINUS Expr
+    (73) Expr -> . NUMBER
+    (74) Expr -> . LPAREN Expr RPAREN
+    (75) Expr -> . CallExpr
+    (76) Expr -> . ID
+    (37) CallExpr -> . ID LPAREN Actuals RPAREN
+
+    NOT             shift and go to state 51
+    MINUS           shift and go to state 50
+    NUMBER          shift and go to state 52
+    LPAREN          shift and go to state 53
+    ID              shift and go to state 55
+
+    Expr                           shift and go to state 110
+    CallExpr                       shift and go to state 54
+
+state 84
+
+    (70) Expr -> Expr AND . Expr
+    (57) Expr -> . Expr PLUS Expr
+    (58) Expr -> . Expr MINUS Expr
+    (59) Expr -> . Expr TIMES Expr
+    (60) Expr -> . Expr DIVIDE Expr
+    (61) Expr -> . Expr LSHIFT Expr
+    (62) Expr -> . Expr RSHIFT Expr
+    (63) Expr -> . Expr LT Expr
+    (64) Expr -> . Expr GT Expr
+    (65) Expr -> . Expr EQ Expr
+    (66) Expr -> . Expr NE Expr
+    (67) Expr -> . Expr LE Expr
+    (68) Expr -> . Expr GE Expr
+    (69) Expr -> . Expr OR Expr
+    (70) Expr -> . Expr AND Expr
+    (71) Expr -> . NOT Expr
+    (72) Expr -> . MINUS Expr
+    (73) Expr -> . NUMBER
+    (74) Expr -> . LPAREN Expr RPAREN
+    (75) Expr -> . CallExpr
+    (76) Expr -> . ID
+    (37) CallExpr -> . ID LPAREN Actuals RPAREN
+
+    NOT             shift and go to state 51
+    MINUS           shift and go to state 50
+    NUMBER          shift and go to state 52
+    LPAREN          shift and go to state 53
+    ID              shift and go to state 55
+
+    Expr                           shift and go to state 111
+    CallExpr                       shift and go to state 54
+
+state 85
+
+    (72) Expr -> MINUS Expr .
+    (57) Expr -> Expr . PLUS Expr
+    (58) Expr -> Expr . MINUS Expr
+    (59) Expr -> Expr . TIMES Expr
+    (60) Expr -> Expr . DIVIDE Expr
+    (61) Expr -> Expr . LSHIFT Expr
+    (62) Expr -> Expr . RSHIFT Expr
+    (63) Expr -> Expr . LT Expr
+    (64) Expr -> Expr . GT Expr
+    (65) Expr -> Expr . EQ Expr
+    (66) Expr -> Expr . NE Expr
+    (67) Expr -> Expr . LE Expr
+    (68) Expr -> Expr . GE Expr
+    (69) Expr -> Expr . OR Expr
+    (70) Expr -> Expr . AND Expr
+
+    SEMI            reduce using rule 72 (Expr -> MINUS Expr .)
+    PLUS            reduce using rule 72 (Expr -> MINUS Expr .)
+    MINUS           reduce using rule 72 (Expr -> MINUS Expr .)
+    TIMES           reduce using rule 72 (Expr -> MINUS Expr .)
+    DIVIDE          reduce using rule 72 (Expr -> MINUS Expr .)
+    LSHIFT          reduce using rule 72 (Expr -> MINUS Expr .)
+    RSHIFT          reduce using rule 72 (Expr -> MINUS Expr .)
+    LT              reduce using rule 72 (Expr -> MINUS Expr .)
+    GT              reduce using rule 72 (Expr -> MINUS Expr .)
+    EQ              reduce using rule 72 (Expr -> MINUS Expr .)
+    NE              reduce using rule 72 (Expr -> MINUS Expr .)
+    LE              reduce using rule 72 (Expr -> MINUS Expr .)
+    GE              reduce using rule 72 (Expr -> MINUS Expr .)
+    OR              reduce using rule 72 (Expr -> MINUS Expr .)
+    AND             reduce using rule 72 (Expr -> MINUS Expr .)
+    COMMA           reduce using rule 72 (Expr -> MINUS Expr .)
+    RPAREN          reduce using rule 72 (Expr -> MINUS Expr .)
+
+  ! PLUS            [ shift and go to state 71 ]
+  ! MINUS           [ shift and go to state 72 ]
+  ! TIMES           [ shift and go to state 73 ]
+  ! DIVIDE          [ shift and go to state 74 ]
+  ! LSHIFT          [ shift and go to state 75 ]
+  ! RSHIFT          [ shift and go to state 76 ]
+  ! LT              [ shift and go to state 77 ]
+  ! GT              [ shift and go to state 78 ]
+  ! EQ              [ shift and go to state 79 ]
+  ! NE              [ shift and go to state 80 ]
+  ! LE              [ shift and go to state 81 ]
+  ! GE              [ shift and go to state 82 ]
+  ! OR              [ shift and go to state 83 ]
+  ! AND             [ shift and go to state 84 ]
+
+
+state 86
+
+    (71) Expr -> NOT Expr .
+    (57) Expr -> Expr . PLUS Expr
+    (58) Expr -> Expr . MINUS Expr
+    (59) Expr -> Expr . TIMES Expr
+    (60) Expr -> Expr . DIVIDE Expr
+    (61) Expr -> Expr . LSHIFT Expr
+    (62) Expr -> Expr . RSHIFT Expr
+    (63) Expr -> Expr . LT Expr
+    (64) Expr -> Expr . GT Expr
+    (65) Expr -> Expr . EQ Expr
+    (66) Expr -> Expr . NE Expr
+    (67) Expr -> Expr . LE Expr
+    (68) Expr -> Expr . GE Expr
+    (69) Expr -> Expr . OR Expr
+    (70) Expr -> Expr . AND Expr
+
+    SEMI            reduce using rule 71 (Expr -> NOT Expr .)
+    PLUS            reduce using rule 71 (Expr -> NOT Expr .)
+    MINUS           reduce using rule 71 (Expr -> NOT Expr .)
+    TIMES           reduce using rule 71 (Expr -> NOT Expr .)
+    DIVIDE          reduce using rule 71 (Expr -> NOT Expr .)
+    LSHIFT          reduce using rule 71 (Expr -> NOT Expr .)
+    RSHIFT          reduce using rule 71 (Expr -> NOT Expr .)
+    LT              reduce using rule 71 (Expr -> NOT Expr .)
+    GT              reduce using rule 71 (Expr -> NOT Expr .)
+    EQ              reduce using rule 71 (Expr -> NOT Expr .)
+    NE              reduce using rule 71 (Expr -> NOT Expr .)
+    LE              reduce using rule 71 (Expr -> NOT Expr .)
+    GE              reduce using rule 71 (Expr -> NOT Expr .)
+    OR              reduce using rule 71 (Expr -> NOT Expr .)
+    AND             reduce using rule 71 (Expr -> NOT Expr .)
+    COMMA           reduce using rule 71 (Expr -> NOT Expr .)
+    RPAREN          reduce using rule 71 (Expr -> NOT Expr .)
+
+  ! PLUS            [ shift and go to state 71 ]
+  ! MINUS           [ shift and go to state 72 ]
+  ! TIMES           [ shift and go to state 73 ]
+  ! DIVIDE          [ shift and go to state 74 ]
+  ! LSHIFT          [ shift and go to state 75 ]
+  ! RSHIFT          [ shift and go to state 76 ]
+  ! LT              [ shift and go to state 77 ]
+  ! GT              [ shift and go to state 78 ]
+  ! EQ              [ shift and go to state 79 ]
+  ! NE              [ shift and go to state 80 ]
+  ! LE              [ shift and go to state 81 ]
+  ! GE              [ shift and go to state 82 ]
+  ! OR              [ shift and go to state 83 ]
+  ! AND             [ shift and go to state 84 ]
+
+
+state 87
+
+    (74) Expr -> LPAREN Expr . RPAREN
+    (57) Expr -> Expr . PLUS Expr
+    (58) Expr -> Expr . MINUS Expr
+    (59) Expr -> Expr . TIMES Expr
+    (60) Expr -> Expr . DIVIDE Expr
+    (61) Expr -> Expr . LSHIFT Expr
+    (62) Expr -> Expr . RSHIFT Expr
+    (63) Expr -> Expr . LT Expr
+    (64) Expr -> Expr . GT Expr
+    (65) Expr -> Expr . EQ Expr
+    (66) Expr -> Expr . NE Expr
+    (67) Expr -> Expr . LE Expr
+    (68) Expr -> Expr . GE Expr
+    (69) Expr -> Expr . OR Expr
+    (70) Expr -> Expr . AND Expr
+
+    RPAREN          shift and go to state 112
+    PLUS            shift and go to state 71
+    MINUS           shift and go to state 72
+    TIMES           shift and go to state 73
+    DIVIDE          shift and go to state 74
+    LSHIFT          shift and go to state 75
+    RSHIFT          shift and go to state 76
+    LT              shift and go to state 77
+    GT              shift and go to state 78
+    EQ              shift and go to state 79
+    NE              shift and go to state 80
+    LE              shift and go to state 81
+    GE              shift and go to state 82
+    OR              shift and go to state 83
+    AND             shift and go to state 84
+
+
+state 88
+
+    (42) IfStmt -> If TestExpr Then . StmtsBlock EndThen EndIf
+    (43) IfStmt -> If TestExpr Then . StmtsBlock EndThen Else StmtsBlock EndIf
+    (45) StmtsBlock -> . LBRACE newScope Stmts RBRACE
+
+    LBRACE          shift and go to state 114
+
+    StmtsBlock                     shift and go to state 113
+
+state 89
+
+    (44) TestExpr -> LPAREN Expr . RPAREN
+    (57) Expr -> Expr . PLUS Expr
+    (58) Expr -> Expr . MINUS Expr
+    (59) Expr -> Expr . TIMES Expr
+    (60) Expr -> Expr . DIVIDE Expr
+    (61) Expr -> Expr . LSHIFT Expr
+    (62) Expr -> Expr . RSHIFT Expr
+    (63) Expr -> Expr . LT Expr
+    (64) Expr -> Expr . GT Expr
+    (65) Expr -> Expr . EQ Expr
+    (66) Expr -> Expr . NE Expr
+    (67) Expr -> Expr . LE Expr
+    (68) Expr -> Expr . GE Expr
+    (69) Expr -> Expr . OR Expr
+    (70) Expr -> Expr . AND Expr
+
+    RPAREN          shift and go to state 115
+    PLUS            shift and go to state 71
+    MINUS           shift and go to state 72
+    TIMES           shift and go to state 73
+    DIVIDE          shift and go to state 74
+    LSHIFT          shift and go to state 75
+    RSHIFT          shift and go to state 76
+    LT              shift and go to state 77
+    GT              shift and go to state 78
+    EQ              shift and go to state 79
+    NE              shift and go to state 80
+    LE              shift and go to state 81
+    GE              shift and go to state 82
+    OR              shift and go to state 83
+    AND             shift and go to state 84
+
+
+state 90
+
+    (51) WhileStmt -> While TestExpr Do . StmtsBlock EndWhile
+    (45) StmtsBlock -> . LBRACE newScope Stmts RBRACE
+
+    LBRACE          shift and go to state 114
+
+    StmtsBlock                     shift and go to state 116
+
+state 91
+
+    (16) Arg -> Type ID .
+
+    COMMA           reduce using rule 16 (Arg -> Type ID .)
+    RPAREN          reduce using rule 16 (Arg -> Type ID .)
+
+
+state 92
+
+    (7) FuncHead -> Type FuncName LPAREN newScope Args RPAREN .
+
+    LBRACE          reduce using rule 7 (FuncHead -> Type FuncName LPAREN newScope Args RPAREN .)
+
+
+state 93
+
+    (17) Arg -> Arg COMMA . Type ID
+    (13) Type -> . INT
+    (14) Type -> . CHAR
+    (15) Type -> . VOID
+
+    INT             shift and go to state 8
+    CHAR            shift and go to state 9
+    VOID            shift and go to state 10
+
+    Type                           shift and go to state 117
+
+state 94
+
+    (32) AssignStmt -> ID ASSIGN Expr SEMI .
+
+    RBRACE          reduce using rule 32 (AssignStmt -> ID ASSIGN Expr SEMI .)
+    ID              reduce using rule 32 (AssignStmt -> ID ASSIGN Expr SEMI .)
+    PRINT           reduce using rule 32 (AssignStmt -> ID ASSIGN Expr SEMI .)
+    RETURN          reduce using rule 32 (AssignStmt -> ID ASSIGN Expr SEMI .)
+    BREAK           reduce using rule 32 (AssignStmt -> ID ASSIGN Expr SEMI .)
+    CONTINUE        reduce using rule 32 (AssignStmt -> ID ASSIGN Expr SEMI .)
+    IF              reduce using rule 32 (AssignStmt -> ID ASSIGN Expr SEMI .)
+    WHILE           reduce using rule 32 (AssignStmt -> ID ASSIGN Expr SEMI .)
+    INT             reduce using rule 32 (AssignStmt -> ID ASSIGN Expr SEMI .)
+    CHAR            reduce using rule 32 (AssignStmt -> ID ASSIGN Expr SEMI .)
+    VOID            reduce using rule 32 (AssignStmt -> ID ASSIGN Expr SEMI .)
+
+
+state 95
+
+    (37) CallExpr -> ID LPAREN Actuals RPAREN .
+
+    SEMI            reduce using rule 37 (CallExpr -> ID LPAREN Actuals RPAREN .)
+    PLUS            reduce using rule 37 (CallExpr -> ID LPAREN Actuals RPAREN .)
+    MINUS           reduce using rule 37 (CallExpr -> ID LPAREN Actuals RPAREN .)
+    TIMES           reduce using rule 37 (CallExpr -> ID LPAREN Actuals RPAREN .)
+    DIVIDE          reduce using rule 37 (CallExpr -> ID LPAREN Actuals RPAREN .)
+    LSHIFT          reduce using rule 37 (CallExpr -> ID LPAREN Actuals RPAREN .)
+    RSHIFT          reduce using rule 37 (CallExpr -> ID LPAREN Actuals RPAREN .)
+    LT              reduce using rule 37 (CallExpr -> ID LPAREN Actuals RPAREN .)
+    GT              reduce using rule 37 (CallExpr -> ID LPAREN Actuals RPAREN .)
+    EQ              reduce using rule 37 (CallExpr -> ID LPAREN Actuals RPAREN .)
+    NE              reduce using rule 37 (CallExpr -> ID LPAREN Actuals RPAREN .)
+    LE              reduce using rule 37 (CallExpr -> ID LPAREN Actuals RPAREN .)
+    GE              reduce using rule 37 (CallExpr -> ID LPAREN Actuals RPAREN .)
+    OR              reduce using rule 37 (CallExpr -> ID LPAREN Actuals RPAREN .)
+    AND             reduce using rule 37 (CallExpr -> ID LPAREN Actuals RPAREN .)
+    COMMA           reduce using rule 37 (CallExpr -> ID LPAREN Actuals RPAREN .)
+    RPAREN          reduce using rule 37 (CallExpr -> ID LPAREN Actuals RPAREN .)
+
+
+state 96
+
+    (38) Actuals -> Expr PActuals .
+    (34) PActuals -> PActuals . COMMA Expr
+
+    RPAREN          reduce using rule 38 (Actuals -> Expr PActuals .)
+    COMMA           shift and go to state 118
+
+
+state 97
+
+    (33) PrintStmt -> PRINT LPAREN Actuals RPAREN . SEMI
+
+    SEMI            shift and go to state 119
+
+
+state 98
+
+    (57) Expr -> Expr PLUS Expr .
+    (57) Expr -> Expr . PLUS Expr
+    (58) Expr -> Expr . MINUS Expr
+    (59) Expr -> Expr . TIMES Expr
+    (60) Expr -> Expr . DIVIDE Expr
+    (61) Expr -> Expr . LSHIFT Expr
+    (62) Expr -> Expr . RSHIFT Expr
+    (63) Expr -> Expr . LT Expr
+    (64) Expr -> Expr . GT Expr
+    (65) Expr -> Expr . EQ Expr
+    (66) Expr -> Expr . NE Expr
+    (67) Expr -> Expr . LE Expr
+    (68) Expr -> Expr . GE Expr
+    (69) Expr -> Expr . OR Expr
+    (70) Expr -> Expr . AND Expr
+
+    SEMI            reduce using rule 57 (Expr -> Expr PLUS Expr .)
+    PLUS            reduce using rule 57 (Expr -> Expr PLUS Expr .)
+    MINUS           reduce using rule 57 (Expr -> Expr PLUS Expr .)
+    LSHIFT          reduce using rule 57 (Expr -> Expr PLUS Expr .)
+    RSHIFT          reduce using rule 57 (Expr -> Expr PLUS Expr .)
+    LT              reduce using rule 57 (Expr -> Expr PLUS Expr .)
+    GT              reduce using rule 57 (Expr -> Expr PLUS Expr .)
+    EQ              reduce using rule 57 (Expr -> Expr PLUS Expr .)
+    NE              reduce using rule 57 (Expr -> Expr PLUS Expr .)
+    LE              reduce using rule 57 (Expr -> Expr PLUS Expr .)
+    GE              reduce using rule 57 (Expr -> Expr PLUS Expr .)
+    OR              reduce using rule 57 (Expr -> Expr PLUS Expr .)
+    AND             reduce using rule 57 (Expr -> Expr PLUS Expr .)
+    COMMA           reduce using rule 57 (Expr -> Expr PLUS Expr .)
+    RPAREN          reduce using rule 57 (Expr -> Expr PLUS Expr .)
+    TIMES           shift and go to state 73
+    DIVIDE          shift and go to state 74
+
+  ! TIMES           [ reduce using rule 57 (Expr -> Expr PLUS Expr .) ]
+  ! DIVIDE          [ reduce using rule 57 (Expr -> Expr PLUS Expr .) ]
+  ! PLUS            [ shift and go to state 71 ]
+  ! MINUS           [ shift and go to state 72 ]
+  ! LSHIFT          [ shift and go to state 75 ]
+  ! RSHIFT          [ shift and go to state 76 ]
+  ! LT              [ shift and go to state 77 ]
+  ! GT              [ shift and go to state 78 ]
+  ! EQ              [ shift and go to state 79 ]
+  ! NE              [ shift and go to state 80 ]
+  ! LE              [ shift and go to state 81 ]
+  ! GE              [ shift and go to state 82 ]
+  ! OR              [ shift and go to state 83 ]
+  ! AND             [ shift and go to state 84 ]
+
+
+state 99
+
+    (58) Expr -> Expr MINUS Expr .
+    (57) Expr -> Expr . PLUS Expr
+    (58) Expr -> Expr . MINUS Expr
+    (59) Expr -> Expr . TIMES Expr
+    (60) Expr -> Expr . DIVIDE Expr
+    (61) Expr -> Expr . LSHIFT Expr
+    (62) Expr -> Expr . RSHIFT Expr
+    (63) Expr -> Expr . LT Expr
+    (64) Expr -> Expr . GT Expr
+    (65) Expr -> Expr . EQ Expr
+    (66) Expr -> Expr . NE Expr
+    (67) Expr -> Expr . LE Expr
+    (68) Expr -> Expr . GE Expr
+    (69) Expr -> Expr . OR Expr
+    (70) Expr -> Expr . AND Expr
+
+    SEMI            reduce using rule 58 (Expr -> Expr MINUS Expr .)
+    PLUS            reduce using rule 58 (Expr -> Expr MINUS Expr .)
+    MINUS           reduce using rule 58 (Expr -> Expr MINUS Expr .)
+    LSHIFT          reduce using rule 58 (Expr -> Expr MINUS Expr .)
+    RSHIFT          reduce using rule 58 (Expr -> Expr MINUS Expr .)
+    LT              reduce using rule 58 (Expr -> Expr MINUS Expr .)
+    GT              reduce using rule 58 (Expr -> Expr MINUS Expr .)
+    EQ              reduce using rule 58 (Expr -> Expr MINUS Expr .)
+    NE              reduce using rule 58 (Expr -> Expr MINUS Expr .)
+    LE              reduce using rule 58 (Expr -> Expr MINUS Expr .)
+    GE              reduce using rule 58 (Expr -> Expr MINUS Expr .)
+    OR              reduce using rule 58 (Expr -> Expr MINUS Expr .)
+    AND             reduce using rule 58 (Expr -> Expr MINUS Expr .)
+    COMMA           reduce using rule 58 (Expr -> Expr MINUS Expr .)
+    RPAREN          reduce using rule 58 (Expr -> Expr MINUS Expr .)
+    TIMES           shift and go to state 73
+    DIVIDE          shift and go to state 74
+
+  ! TIMES           [ reduce using rule 58 (Expr -> Expr MINUS Expr .) ]
+  ! DIVIDE          [ reduce using rule 58 (Expr -> Expr MINUS Expr .) ]
+  ! PLUS            [ shift and go to state 71 ]
+  ! MINUS           [ shift and go to state 72 ]
+  ! LSHIFT          [ shift and go to state 75 ]
+  ! RSHIFT          [ shift and go to state 76 ]
+  ! LT              [ shift and go to state 77 ]
+  ! GT              [ shift and go to state 78 ]
+  ! EQ              [ shift and go to state 79 ]
+  ! NE              [ shift and go to state 80 ]
+  ! LE              [ shift and go to state 81 ]
+  ! GE              [ shift and go to state 82 ]
+  ! OR              [ shift and go to state 83 ]
+  ! AND             [ shift and go to state 84 ]
+
+
+state 100
+
+    (59) Expr -> Expr TIMES Expr .
+    (57) Expr -> Expr . PLUS Expr
+    (58) Expr -> Expr . MINUS Expr
+    (59) Expr -> Expr . TIMES Expr
+    (60) Expr -> Expr . DIVIDE Expr
+    (61) Expr -> Expr . LSHIFT Expr
+    (62) Expr -> Expr . RSHIFT Expr
+    (63) Expr -> Expr . LT Expr
+    (64) Expr -> Expr . GT Expr
+    (65) Expr -> Expr . EQ Expr
+    (66) Expr -> Expr . NE Expr
+    (67) Expr -> Expr . LE Expr
+    (68) Expr -> Expr . GE Expr
+    (69) Expr -> Expr . OR Expr
+    (70) Expr -> Expr . AND Expr
+
+    SEMI            reduce using rule 59 (Expr -> Expr TIMES Expr .)
+    PLUS            reduce using rule 59 (Expr -> Expr TIMES Expr .)
+    MINUS           reduce using rule 59 (Expr -> Expr TIMES Expr .)
+    TIMES           reduce using rule 59 (Expr -> Expr TIMES Expr .)
+    DIVIDE          reduce using rule 59 (Expr -> Expr TIMES Expr .)
+    LSHIFT          reduce using rule 59 (Expr -> Expr TIMES Expr .)
+    RSHIFT          reduce using rule 59 (Expr -> Expr TIMES Expr .)
+    LT              reduce using rule 59 (Expr -> Expr TIMES Expr .)
+    GT              reduce using rule 59 (Expr -> Expr TIMES Expr .)
+    EQ              reduce using rule 59 (Expr -> Expr TIMES Expr .)
+    NE              reduce using rule 59 (Expr -> Expr TIMES Expr .)
+    LE              reduce using rule 59 (Expr -> Expr TIMES Expr .)
+    GE              reduce using rule 59 (Expr -> Expr TIMES Expr .)
+    OR              reduce using rule 59 (Expr -> Expr TIMES Expr .)
+    AND             reduce using rule 59 (Expr -> Expr TIMES Expr .)
+    COMMA           reduce using rule 59 (Expr -> Expr TIMES Expr .)
+    RPAREN          reduce using rule 59 (Expr -> Expr TIMES Expr .)
+
+  ! PLUS            [ shift and go to state 71 ]
+  ! MINUS           [ shift and go to state 72 ]
+  ! TIMES           [ shift and go to state 73 ]
+  ! DIVIDE          [ shift and go to state 74 ]
+  ! LSHIFT          [ shift and go to state 75 ]
+  ! RSHIFT          [ shift and go to state 76 ]
+  ! LT              [ shift and go to state 77 ]
+  ! GT              [ shift and go to state 78 ]
+  ! EQ              [ shift and go to state 79 ]
+  ! NE              [ shift and go to state 80 ]
+  ! LE              [ shift and go to state 81 ]
+  ! GE              [ shift and go to state 82 ]
+  ! OR              [ shift and go to state 83 ]
+  ! AND             [ shift and go to state 84 ]
+
+
+state 101
+
+    (60) Expr -> Expr DIVIDE Expr .
+    (57) Expr -> Expr . PLUS Expr
+    (58) Expr -> Expr . MINUS Expr
+    (59) Expr -> Expr . TIMES Expr
+    (60) Expr -> Expr . DIVIDE Expr
+    (61) Expr -> Expr . LSHIFT Expr
+    (62) Expr -> Expr . RSHIFT Expr
+    (63) Expr -> Expr . LT Expr
+    (64) Expr -> Expr . GT Expr
+    (65) Expr -> Expr . EQ Expr
+    (66) Expr -> Expr . NE Expr
+    (67) Expr -> Expr . LE Expr
+    (68) Expr -> Expr . GE Expr
+    (69) Expr -> Expr . OR Expr
+    (70) Expr -> Expr . AND Expr
+
+    SEMI            reduce using rule 60 (Expr -> Expr DIVIDE Expr .)
+    PLUS            reduce using rule 60 (Expr -> Expr DIVIDE Expr .)
+    MINUS           reduce using rule 60 (Expr -> Expr DIVIDE Expr .)
+    TIMES           reduce using rule 60 (Expr -> Expr DIVIDE Expr .)
+    DIVIDE          reduce using rule 60 (Expr -> Expr DIVIDE Expr .)
+    LSHIFT          reduce using rule 60 (Expr -> Expr DIVIDE Expr .)
+    RSHIFT          reduce using rule 60 (Expr -> Expr DIVIDE Expr .)
+    LT              reduce using rule 60 (Expr -> Expr DIVIDE Expr .)
+    GT              reduce using rule 60 (Expr -> Expr DIVIDE Expr .)
+    EQ              reduce using rule 60 (Expr -> Expr DIVIDE Expr .)
+    NE              reduce using rule 60 (Expr -> Expr DIVIDE Expr .)
+    LE              reduce using rule 60 (Expr -> Expr DIVIDE Expr .)
+    GE              reduce using rule 60 (Expr -> Expr DIVIDE Expr .)
+    OR              reduce using rule 60 (Expr -> Expr DIVIDE Expr .)
+    AND             reduce using rule 60 (Expr -> Expr DIVIDE Expr .)
+    COMMA           reduce using rule 60 (Expr -> Expr DIVIDE Expr .)
+    RPAREN          reduce using rule 60 (Expr -> Expr DIVIDE Expr .)
+
+  ! PLUS            [ shift and go to state 71 ]
+  ! MINUS           [ shift and go to state 72 ]
+  ! TIMES           [ shift and go to state 73 ]
+  ! DIVIDE          [ shift and go to state 74 ]
+  ! LSHIFT          [ shift and go to state 75 ]
+  ! RSHIFT          [ shift and go to state 76 ]
+  ! LT              [ shift and go to state 77 ]
+  ! GT              [ shift and go to state 78 ]
+  ! EQ              [ shift and go to state 79 ]
+  ! NE              [ shift and go to state 80 ]
+  ! LE              [ shift and go to state 81 ]
+  ! GE              [ shift and go to state 82 ]
+  ! OR              [ shift and go to state 83 ]
+  ! AND             [ shift and go to state 84 ]
+
+
+state 102
+
+    (61) Expr -> Expr LSHIFT Expr .
+    (57) Expr -> Expr . PLUS Expr
+    (58) Expr -> Expr . MINUS Expr
+    (59) Expr -> Expr . TIMES Expr
+    (60) Expr -> Expr . DIVIDE Expr
+    (61) Expr -> Expr . LSHIFT Expr
+    (62) Expr -> Expr . RSHIFT Expr
+    (63) Expr -> Expr . LT Expr
+    (64) Expr -> Expr . GT Expr
+    (65) Expr -> Expr . EQ Expr
+    (66) Expr -> Expr . NE Expr
+    (67) Expr -> Expr . LE Expr
+    (68) Expr -> Expr . GE Expr
+    (69) Expr -> Expr . OR Expr
+    (70) Expr -> Expr . AND Expr
+
+    SEMI            reduce using rule 61 (Expr -> Expr LSHIFT Expr .)
+    LSHIFT          reduce using rule 61 (Expr -> Expr LSHIFT Expr .)
+    RSHIFT          reduce using rule 61 (Expr -> Expr LSHIFT Expr .)
+    LT              reduce using rule 61 (Expr -> Expr LSHIFT Expr .)
+    GT              reduce using rule 61 (Expr -> Expr LSHIFT Expr .)
+    EQ              reduce using rule 61 (Expr -> Expr LSHIFT Expr .)
+    NE              reduce using rule 61 (Expr -> Expr LSHIFT Expr .)
+    LE              reduce using rule 61 (Expr -> Expr LSHIFT Expr .)
+    GE              reduce using rule 61 (Expr -> Expr LSHIFT Expr .)
+    OR              reduce using rule 61 (Expr -> Expr LSHIFT Expr .)
+    AND             reduce using rule 61 (Expr -> Expr LSHIFT Expr .)
+    COMMA           reduce using rule 61 (Expr -> Expr LSHIFT Expr .)
+    RPAREN          reduce using rule 61 (Expr -> Expr LSHIFT Expr .)
+    PLUS            shift and go to state 71
+    MINUS           shift and go to state 72
+    TIMES           shift and go to state 73
+    DIVIDE          shift and go to state 74
+
+  ! PLUS            [ reduce using rule 61 (Expr -> Expr LSHIFT Expr .) ]
+  ! MINUS           [ reduce using rule 61 (Expr -> Expr LSHIFT Expr .) ]
+  ! TIMES           [ reduce using rule 61 (Expr -> Expr LSHIFT Expr .) ]
+  ! DIVIDE          [ reduce using rule 61 (Expr -> Expr LSHIFT Expr .) ]
+  ! LSHIFT          [ shift and go to state 75 ]
+  ! RSHIFT          [ shift and go to state 76 ]
+  ! LT              [ shift and go to state 77 ]
+  ! GT              [ shift and go to state 78 ]
+  ! EQ              [ shift and go to state 79 ]
+  ! NE              [ shift and go to state 80 ]
+  ! LE              [ shift and go to state 81 ]
+  ! GE              [ shift and go to state 82 ]
+  ! OR              [ shift and go to state 83 ]
+  ! AND             [ shift and go to state 84 ]
+
+
+state 103
+
+    (62) Expr -> Expr RSHIFT Expr .
+    (57) Expr -> Expr . PLUS Expr
+    (58) Expr -> Expr . MINUS Expr
+    (59) Expr -> Expr . TIMES Expr
+    (60) Expr -> Expr . DIVIDE Expr
+    (61) Expr -> Expr . LSHIFT Expr
+    (62) Expr -> Expr . RSHIFT Expr
+    (63) Expr -> Expr . LT Expr
+    (64) Expr -> Expr . GT Expr
+    (65) Expr -> Expr . EQ Expr
+    (66) Expr -> Expr . NE Expr
+    (67) Expr -> Expr . LE Expr
+    (68) Expr -> Expr . GE Expr
+    (69) Expr -> Expr . OR Expr
+    (70) Expr -> Expr . AND Expr
+
+    SEMI            reduce using rule 62 (Expr -> Expr RSHIFT Expr .)
+    LSHIFT          reduce using rule 62 (Expr -> Expr RSHIFT Expr .)
+    RSHIFT          reduce using rule 62 (Expr -> Expr RSHIFT Expr .)
+    LT              reduce using rule 62 (Expr -> Expr RSHIFT Expr .)
+    GT              reduce using rule 62 (Expr -> Expr RSHIFT Expr .)
+    EQ              reduce using rule 62 (Expr -> Expr RSHIFT Expr .)
+    NE              reduce using rule 62 (Expr -> Expr RSHIFT Expr .)
+    LE              reduce using rule 62 (Expr -> Expr RSHIFT Expr .)
+    GE              reduce using rule 62 (Expr -> Expr RSHIFT Expr .)
+    OR              reduce using rule 62 (Expr -> Expr RSHIFT Expr .)
+    AND             reduce using rule 62 (Expr -> Expr RSHIFT Expr .)
+    COMMA           reduce using rule 62 (Expr -> Expr RSHIFT Expr .)
+    RPAREN          reduce using rule 62 (Expr -> Expr RSHIFT Expr .)
+    PLUS            shift and go to state 71
+    MINUS           shift and go to state 72
+    TIMES           shift and go to state 73
+    DIVIDE          shift and go to state 74
+
+  ! PLUS            [ reduce using rule 62 (Expr -> Expr RSHIFT Expr .) ]
+  ! MINUS           [ reduce using rule 62 (Expr -> Expr RSHIFT Expr .) ]
+  ! TIMES           [ reduce using rule 62 (Expr -> Expr RSHIFT Expr .) ]
+  ! DIVIDE          [ reduce using rule 62 (Expr -> Expr RSHIFT Expr .) ]
+  ! LSHIFT          [ shift and go to state 75 ]
+  ! RSHIFT          [ shift and go to state 76 ]
+  ! LT              [ shift and go to state 77 ]
+  ! GT              [ shift and go to state 78 ]
+  ! EQ              [ shift and go to state 79 ]
+  ! NE              [ shift and go to state 80 ]
+  ! LE              [ shift and go to state 81 ]
+  ! GE              [ shift and go to state 82 ]
+  ! OR              [ shift and go to state 83 ]
+  ! AND             [ shift and go to state 84 ]
+
+
+state 104
+
+    (63) Expr -> Expr LT Expr .
+    (57) Expr -> Expr . PLUS Expr
+    (58) Expr -> Expr . MINUS Expr
+    (59) Expr -> Expr . TIMES Expr
+    (60) Expr -> Expr . DIVIDE Expr
+    (61) Expr -> Expr . LSHIFT Expr
+    (62) Expr -> Expr . RSHIFT Expr
+    (63) Expr -> Expr . LT Expr
+    (64) Expr -> Expr . GT Expr
+    (65) Expr -> Expr . EQ Expr
+    (66) Expr -> Expr . NE Expr
+    (67) Expr -> Expr . LE Expr
+    (68) Expr -> Expr . GE Expr
+    (69) Expr -> Expr . OR Expr
+    (70) Expr -> Expr . AND Expr
+
+    SEMI            reduce using rule 63 (Expr -> Expr LT Expr .)
+    LT              reduce using rule 63 (Expr -> Expr LT Expr .)
+    GT              reduce using rule 63 (Expr -> Expr LT Expr .)
+    LE              reduce using rule 63 (Expr -> Expr LT Expr .)
+    GE              reduce using rule 63 (Expr -> Expr LT Expr .)
+    OR              reduce using rule 63 (Expr -> Expr LT Expr .)
+    AND             reduce using rule 63 (Expr -> Expr LT Expr .)
+    COMMA           reduce using rule 63 (Expr -> Expr LT Expr .)
+    RPAREN          reduce using rule 63 (Expr -> Expr LT Expr .)
+    PLUS            shift and go to state 71
+    MINUS           shift and go to state 72
+    TIMES           shift and go to state 73
+    DIVIDE          shift and go to state 74
+    LSHIFT          shift and go to state 75
+    RSHIFT          shift and go to state 76
+    EQ              shift and go to state 79
+    NE              shift and go to state 80
+
+  ! PLUS            [ reduce using rule 63 (Expr -> Expr LT Expr .) ]
+  ! MINUS           [ reduce using rule 63 (Expr -> Expr LT Expr .) ]
+  ! TIMES           [ reduce using rule 63 (Expr -> Expr LT Expr .) ]
+  ! DIVIDE          [ reduce using rule 63 (Expr -> Expr LT Expr .) ]
+  ! LSHIFT          [ reduce using rule 63 (Expr -> Expr LT Expr .) ]
+  ! RSHIFT          [ reduce using rule 63 (Expr -> Expr LT Expr .) ]
+  ! EQ              [ reduce using rule 63 (Expr -> Expr LT Expr .) ]
+  ! NE              [ reduce using rule 63 (Expr -> Expr LT Expr .) ]
+  ! LT              [ shift and go to state 77 ]
+  ! GT              [ shift and go to state 78 ]
+  ! LE              [ shift and go to state 81 ]
+  ! GE              [ shift and go to state 82 ]
+  ! OR              [ shift and go to state 83 ]
+  ! AND             [ shift and go to state 84 ]
+
+
+state 105
+
+    (64) Expr -> Expr GT Expr .
+    (57) Expr -> Expr . PLUS Expr
+    (58) Expr -> Expr . MINUS Expr
+    (59) Expr -> Expr . TIMES Expr
+    (60) Expr -> Expr . DIVIDE Expr
+    (61) Expr -> Expr . LSHIFT Expr
+    (62) Expr -> Expr . RSHIFT Expr
+    (63) Expr -> Expr . LT Expr
+    (64) Expr -> Expr . GT Expr
+    (65) Expr -> Expr . EQ Expr
+    (66) Expr -> Expr . NE Expr
+    (67) Expr -> Expr . LE Expr
+    (68) Expr -> Expr . GE Expr
+    (69) Expr -> Expr . OR Expr
+    (70) Expr -> Expr . AND Expr
+
+    SEMI            reduce using rule 64 (Expr -> Expr GT Expr .)
+    LT              reduce using rule 64 (Expr -> Expr GT Expr .)
+    GT              reduce using rule 64 (Expr -> Expr GT Expr .)
+    LE              reduce using rule 64 (Expr -> Expr GT Expr .)
+    GE              reduce using rule 64 (Expr -> Expr GT Expr .)
+    OR              reduce using rule 64 (Expr -> Expr GT Expr .)
+    AND             reduce using rule 64 (Expr -> Expr GT Expr .)
+    COMMA           reduce using rule 64 (Expr -> Expr GT Expr .)
+    RPAREN          reduce using rule 64 (Expr -> Expr GT Expr .)
+    PLUS            shift and go to state 71
+    MINUS           shift and go to state 72
+    TIMES           shift and go to state 73
+    DIVIDE          shift and go to state 74
+    LSHIFT          shift and go to state 75
+    RSHIFT          shift and go to state 76
+    EQ              shift and go to state 79
+    NE              shift and go to state 80
+
+  ! PLUS            [ reduce using rule 64 (Expr -> Expr GT Expr .) ]
+  ! MINUS           [ reduce using rule 64 (Expr -> Expr GT Expr .) ]
+  ! TIMES           [ reduce using rule 64 (Expr -> Expr GT Expr .) ]
+  ! DIVIDE          [ reduce using rule 64 (Expr -> Expr GT Expr .) ]
+  ! LSHIFT          [ reduce using rule 64 (Expr -> Expr GT Expr .) ]
+  ! RSHIFT          [ reduce using rule 64 (Expr -> Expr GT Expr .) ]
+  ! EQ              [ reduce using rule 64 (Expr -> Expr GT Expr .) ]
+  ! NE              [ reduce using rule 64 (Expr -> Expr GT Expr .) ]
+  ! LT              [ shift and go to state 77 ]
+  ! GT              [ shift and go to state 78 ]
+  ! LE              [ shift and go to state 81 ]
+  ! GE              [ shift and go to state 82 ]
+  ! OR              [ shift and go to state 83 ]
+  ! AND             [ shift and go to state 84 ]
+
+
+state 106
+
+    (65) Expr -> Expr EQ Expr .
+    (57) Expr -> Expr . PLUS Expr
+    (58) Expr -> Expr . MINUS Expr
+    (59) Expr -> Expr . TIMES Expr
+    (60) Expr -> Expr . DIVIDE Expr
+    (61) Expr -> Expr . LSHIFT Expr
+    (62) Expr -> Expr . RSHIFT Expr
+    (63) Expr -> Expr . LT Expr
+    (64) Expr -> Expr . GT Expr
+    (65) Expr -> Expr . EQ Expr
+    (66) Expr -> Expr . NE Expr
+    (67) Expr -> Expr . LE Expr
+    (68) Expr -> Expr . GE Expr
+    (69) Expr -> Expr . OR Expr
+    (70) Expr -> Expr . AND Expr
+
+    SEMI            reduce using rule 65 (Expr -> Expr EQ Expr .)
+    LT              reduce using rule 65 (Expr -> Expr EQ Expr .)
+    GT              reduce using rule 65 (Expr -> Expr EQ Expr .)
+    EQ              reduce using rule 65 (Expr -> Expr EQ Expr .)
+    NE              reduce using rule 65 (Expr -> Expr EQ Expr .)
+    LE              reduce using rule 65 (Expr -> Expr EQ Expr .)
+    GE              reduce using rule 65 (Expr -> Expr EQ Expr .)
+    OR              reduce using rule 65 (Expr -> Expr EQ Expr .)
+    AND             reduce using rule 65 (Expr -> Expr EQ Expr .)
+    COMMA           reduce using rule 65 (Expr -> Expr EQ Expr .)
+    RPAREN          reduce using rule 65 (Expr -> Expr EQ Expr .)
+    PLUS            shift and go to state 71
+    MINUS           shift and go to state 72
+    TIMES           shift and go to state 73
+    DIVIDE          shift and go to state 74
+    LSHIFT          shift and go to state 75
+    RSHIFT          shift and go to state 76
+
+  ! PLUS            [ reduce using rule 65 (Expr -> Expr EQ Expr .) ]
+  ! MINUS           [ reduce using rule 65 (Expr -> Expr EQ Expr .) ]
+  ! TIMES           [ reduce using rule 65 (Expr -> Expr EQ Expr .) ]
+  ! DIVIDE          [ reduce using rule 65 (Expr -> Expr EQ Expr .) ]
+  ! LSHIFT          [ reduce using rule 65 (Expr -> Expr EQ Expr .) ]
+  ! RSHIFT          [ reduce using rule 65 (Expr -> Expr EQ Expr .) ]
+  ! LT              [ shift and go to state 77 ]
+  ! GT              [ shift and go to state 78 ]
+  ! EQ              [ shift and go to state 79 ]
+  ! NE              [ shift and go to state 80 ]
+  ! LE              [ shift and go to state 81 ]
+  ! GE              [ shift and go to state 82 ]
+  ! OR              [ shift and go to state 83 ]
+  ! AND             [ shift and go to state 84 ]
+
+
+state 107
+
+    (66) Expr -> Expr NE Expr .
+    (57) Expr -> Expr . PLUS Expr
+    (58) Expr -> Expr . MINUS Expr
+    (59) Expr -> Expr . TIMES Expr
+    (60) Expr -> Expr . DIVIDE Expr
+    (61) Expr -> Expr . LSHIFT Expr
+    (62) Expr -> Expr . RSHIFT Expr
+    (63) Expr -> Expr . LT Expr
+    (64) Expr -> Expr . GT Expr
+    (65) Expr -> Expr . EQ Expr
+    (66) Expr -> Expr . NE Expr
+    (67) Expr -> Expr . LE Expr
+    (68) Expr -> Expr . GE Expr
+    (69) Expr -> Expr . OR Expr
+    (70) Expr -> Expr . AND Expr
+
+    SEMI            reduce using rule 66 (Expr -> Expr NE Expr .)
+    LT              reduce using rule 66 (Expr -> Expr NE Expr .)
+    GT              reduce using rule 66 (Expr -> Expr NE Expr .)
+    EQ              reduce using rule 66 (Expr -> Expr NE Expr .)
+    NE              reduce using rule 66 (Expr -> Expr NE Expr .)
+    LE              reduce using rule 66 (Expr -> Expr NE Expr .)
+    GE              reduce using rule 66 (Expr -> Expr NE Expr .)
+    OR              reduce using rule 66 (Expr -> Expr NE Expr .)
+    AND             reduce using rule 66 (Expr -> Expr NE Expr .)
+    COMMA           reduce using rule 66 (Expr -> Expr NE Expr .)
+    RPAREN          reduce using rule 66 (Expr -> Expr NE Expr .)
+    PLUS            shift and go to state 71
+    MINUS           shift and go to state 72
+    TIMES           shift and go to state 73
+    DIVIDE          shift and go to state 74
+    LSHIFT          shift and go to state 75
+    RSHIFT          shift and go to state 76
+
+  ! PLUS            [ reduce using rule 66 (Expr -> Expr NE Expr .) ]
+  ! MINUS           [ reduce using rule 66 (Expr -> Expr NE Expr .) ]
+  ! TIMES           [ reduce using rule 66 (Expr -> Expr NE Expr .) ]
+  ! DIVIDE          [ reduce using rule 66 (Expr -> Expr NE Expr .) ]
+  ! LSHIFT          [ reduce using rule 66 (Expr -> Expr NE Expr .) ]
+  ! RSHIFT          [ reduce using rule 66 (Expr -> Expr NE Expr .) ]
+  ! LT              [ shift and go to state 77 ]
+  ! GT              [ shift and go to state 78 ]
+  ! EQ              [ shift and go to state 79 ]
+  ! NE              [ shift and go to state 80 ]
+  ! LE              [ shift and go to state 81 ]
+  ! GE              [ shift and go to state 82 ]
+  ! OR              [ shift and go to state 83 ]
+  ! AND             [ shift and go to state 84 ]
+
+
+state 108
+
+    (67) Expr -> Expr LE Expr .
+    (57) Expr -> Expr . PLUS Expr
+    (58) Expr -> Expr . MINUS Expr
+    (59) Expr -> Expr . TIMES Expr
+    (60) Expr -> Expr . DIVIDE Expr
+    (61) Expr -> Expr . LSHIFT Expr
+    (62) Expr -> Expr . RSHIFT Expr
+    (63) Expr -> Expr . LT Expr
+    (64) Expr -> Expr . GT Expr
+    (65) Expr -> Expr . EQ Expr
+    (66) Expr -> Expr . NE Expr
+    (67) Expr -> Expr . LE Expr
+    (68) Expr -> Expr . GE Expr
+    (69) Expr -> Expr . OR Expr
+    (70) Expr -> Expr . AND Expr
+
+    SEMI            reduce using rule 67 (Expr -> Expr LE Expr .)
+    LT              reduce using rule 67 (Expr -> Expr LE Expr .)
+    GT              reduce using rule 67 (Expr -> Expr LE Expr .)
+    LE              reduce using rule 67 (Expr -> Expr LE Expr .)
+    GE              reduce using rule 67 (Expr -> Expr LE Expr .)
+    OR              reduce using rule 67 (Expr -> Expr LE Expr .)
+    AND             reduce using rule 67 (Expr -> Expr LE Expr .)
+    COMMA           reduce using rule 67 (Expr -> Expr LE Expr .)
+    RPAREN          reduce using rule 67 (Expr -> Expr LE Expr .)
+    PLUS            shift and go to state 71
+    MINUS           shift and go to state 72
+    TIMES           shift and go to state 73
+    DIVIDE          shift and go to state 74
+    LSHIFT          shift and go to state 75
+    RSHIFT          shift and go to state 76
+    EQ              shift and go to state 79
+    NE              shift and go to state 80
+
+  ! PLUS            [ reduce using rule 67 (Expr -> Expr LE Expr .) ]
+  ! MINUS           [ reduce using rule 67 (Expr -> Expr LE Expr .) ]
+  ! TIMES           [ reduce using rule 67 (Expr -> Expr LE Expr .) ]
+  ! DIVIDE          [ reduce using rule 67 (Expr -> Expr LE Expr .) ]
+  ! LSHIFT          [ reduce using rule 67 (Expr -> Expr LE Expr .) ]
+  ! RSHIFT          [ reduce using rule 67 (Expr -> Expr LE Expr .) ]
+  ! EQ              [ reduce using rule 67 (Expr -> Expr LE Expr .) ]
+  ! NE              [ reduce using rule 67 (Expr -> Expr LE Expr .) ]
+  ! LT              [ shift and go to state 77 ]
+  ! GT              [ shift and go to state 78 ]
+  ! LE              [ shift and go to state 81 ]
+  ! GE              [ shift and go to state 82 ]
+  ! OR              [ shift and go to state 83 ]
+  ! AND             [ shift and go to state 84 ]
+
+
+state 109
+
+    (68) Expr -> Expr GE Expr .
+    (57) Expr -> Expr . PLUS Expr
+    (58) Expr -> Expr . MINUS Expr
+    (59) Expr -> Expr . TIMES Expr
+    (60) Expr -> Expr . DIVIDE Expr
+    (61) Expr -> Expr . LSHIFT Expr
+    (62) Expr -> Expr . RSHIFT Expr
+    (63) Expr -> Expr . LT Expr
+    (64) Expr -> Expr . GT Expr
+    (65) Expr -> Expr . EQ Expr
+    (66) Expr -> Expr . NE Expr
+    (67) Expr -> Expr . LE Expr
+    (68) Expr -> Expr . GE Expr
+    (69) Expr -> Expr . OR Expr
+    (70) Expr -> Expr . AND Expr
+
+    SEMI            reduce using rule 68 (Expr -> Expr GE Expr .)
+    LT              reduce using rule 68 (Expr -> Expr GE Expr .)
+    GT              reduce using rule 68 (Expr -> Expr GE Expr .)
+    LE              reduce using rule 68 (Expr -> Expr GE Expr .)
+    GE              reduce using rule 68 (Expr -> Expr GE Expr .)
+    OR              reduce using rule 68 (Expr -> Expr GE Expr .)
+    AND             reduce using rule 68 (Expr -> Expr GE Expr .)
+    COMMA           reduce using rule 68 (Expr -> Expr GE Expr .)
+    RPAREN          reduce using rule 68 (Expr -> Expr GE Expr .)
+    PLUS            shift and go to state 71
+    MINUS           shift and go to state 72
+    TIMES           shift and go to state 73
+    DIVIDE          shift and go to state 74
+    LSHIFT          shift and go to state 75
+    RSHIFT          shift and go to state 76
+    EQ              shift and go to state 79
+    NE              shift and go to state 80
+
+  ! PLUS            [ reduce using rule 68 (Expr -> Expr GE Expr .) ]
+  ! MINUS           [ reduce using rule 68 (Expr -> Expr GE Expr .) ]
+  ! TIMES           [ reduce using rule 68 (Expr -> Expr GE Expr .) ]
+  ! DIVIDE          [ reduce using rule 68 (Expr -> Expr GE Expr .) ]
+  ! LSHIFT          [ reduce using rule 68 (Expr -> Expr GE Expr .) ]
+  ! RSHIFT          [ reduce using rule 68 (Expr -> Expr GE Expr .) ]
+  ! EQ              [ reduce using rule 68 (Expr -> Expr GE Expr .) ]
+  ! NE              [ reduce using rule 68 (Expr -> Expr GE Expr .) ]
+  ! LT              [ shift and go to state 77 ]
+  ! GT              [ shift and go to state 78 ]
+  ! LE              [ shift and go to state 81 ]
+  ! GE              [ shift and go to state 82 ]
+  ! OR              [ shift and go to state 83 ]
+  ! AND             [ shift and go to state 84 ]
+
+
+state 110
+
+    (69) Expr -> Expr OR Expr .
+    (57) Expr -> Expr . PLUS Expr
+    (58) Expr -> Expr . MINUS Expr
+    (59) Expr -> Expr . TIMES Expr
+    (60) Expr -> Expr . DIVIDE Expr
+    (61) Expr -> Expr . LSHIFT Expr
+    (62) Expr -> Expr . RSHIFT Expr
+    (63) Expr -> Expr . LT Expr
+    (64) Expr -> Expr . GT Expr
+    (65) Expr -> Expr . EQ Expr
+    (66) Expr -> Expr . NE Expr
+    (67) Expr -> Expr . LE Expr
+    (68) Expr -> Expr . GE Expr
+    (69) Expr -> Expr . OR Expr
+    (70) Expr -> Expr . AND Expr
+
+    SEMI            reduce using rule 69 (Expr -> Expr OR Expr .)
+    OR              reduce using rule 69 (Expr -> Expr OR Expr .)
+    COMMA           reduce using rule 69 (Expr -> Expr OR Expr .)
+    RPAREN          reduce using rule 69 (Expr -> Expr OR Expr .)
+    PLUS            shift and go to state 71
+    MINUS           shift and go to state 72
+    TIMES           shift and go to state 73
+    DIVIDE          shift and go to state 74
+    LSHIFT          shift and go to state 75
+    RSHIFT          shift and go to state 76
+    LT              shift and go to state 77
+    GT              shift and go to state 78
+    EQ              shift and go to state 79
+    NE              shift and go to state 80
+    LE              shift and go to state 81
+    GE              shift and go to state 82
+    AND             shift and go to state 84
+
+  ! PLUS            [ reduce using rule 69 (Expr -> Expr OR Expr .) ]
+  ! MINUS           [ reduce using rule 69 (Expr -> Expr OR Expr .) ]
+  ! TIMES           [ reduce using rule 69 (Expr -> Expr OR Expr .) ]
+  ! DIVIDE          [ reduce using rule 69 (Expr -> Expr OR Expr .) ]
+  ! LSHIFT          [ reduce using rule 69 (Expr -> Expr OR Expr .) ]
+  ! RSHIFT          [ reduce using rule 69 (Expr -> Expr OR Expr .) ]
+  ! LT              [ reduce using rule 69 (Expr -> Expr OR Expr .) ]
+  ! GT              [ reduce using rule 69 (Expr -> Expr OR Expr .) ]
+  ! EQ              [ reduce using rule 69 (Expr -> Expr OR Expr .) ]
+  ! NE              [ reduce using rule 69 (Expr -> Expr OR Expr .) ]
+  ! LE              [ reduce using rule 69 (Expr -> Expr OR Expr .) ]
+  ! GE              [ reduce using rule 69 (Expr -> Expr OR Expr .) ]
+  ! AND             [ reduce using rule 69 (Expr -> Expr OR Expr .) ]
+  ! OR              [ shift and go to state 83 ]
+
+
+state 111
+
+    (70) Expr -> Expr AND Expr .
+    (57) Expr -> Expr . PLUS Expr
+    (58) Expr -> Expr . MINUS Expr
+    (59) Expr -> Expr . TIMES Expr
+    (60) Expr -> Expr . DIVIDE Expr
+    (61) Expr -> Expr . LSHIFT Expr
+    (62) Expr -> Expr . RSHIFT Expr
+    (63) Expr -> Expr . LT Expr
+    (64) Expr -> Expr . GT Expr
+    (65) Expr -> Expr . EQ Expr
+    (66) Expr -> Expr . NE Expr
+    (67) Expr -> Expr . LE Expr
+    (68) Expr -> Expr . GE Expr
+    (69) Expr -> Expr . OR Expr
+    (70) Expr -> Expr . AND Expr
+
+    SEMI            reduce using rule 70 (Expr -> Expr AND Expr .)
+    OR              reduce using rule 70 (Expr -> Expr AND Expr .)
+    AND             reduce using rule 70 (Expr -> Expr AND Expr .)
+    COMMA           reduce using rule 70 (Expr -> Expr AND Expr .)
+    RPAREN          reduce using rule 70 (Expr -> Expr AND Expr .)
+    PLUS            shift and go to state 71
+    MINUS           shift and go to state 72
+    TIMES           shift and go to state 73
+    DIVIDE          shift and go to state 74
+    LSHIFT          shift and go to state 75
+    RSHIFT          shift and go to state 76
+    LT              shift and go to state 77
+    GT              shift and go to state 78
+    EQ              shift and go to state 79
+    NE              shift and go to state 80
+    LE              shift and go to state 81
+    GE              shift and go to state 82
+
+  ! PLUS            [ reduce using rule 70 (Expr -> Expr AND Expr .) ]
+  ! MINUS           [ reduce using rule 70 (Expr -> Expr AND Expr .) ]
+  ! TIMES           [ reduce using rule 70 (Expr -> Expr AND Expr .) ]
+  ! DIVIDE          [ reduce using rule 70 (Expr -> Expr AND Expr .) ]
+  ! LSHIFT          [ reduce using rule 70 (Expr -> Expr AND Expr .) ]
+  ! RSHIFT          [ reduce using rule 70 (Expr -> Expr AND Expr .) ]
+  ! LT              [ reduce using rule 70 (Expr -> Expr AND Expr .) ]
+  ! GT              [ reduce using rule 70 (Expr -> Expr AND Expr .) ]
+  ! EQ              [ reduce using rule 70 (Expr -> Expr AND Expr .) ]
+  ! NE              [ reduce using rule 70 (Expr -> Expr AND Expr .) ]
+  ! LE              [ reduce using rule 70 (Expr -> Expr AND Expr .) ]
+  ! GE              [ reduce using rule 70 (Expr -> Expr AND Expr .) ]
+  ! OR              [ shift and go to state 83 ]
+  ! AND             [ shift and go to state 84 ]
+
+
+state 112
+
+    (74) Expr -> LPAREN Expr RPAREN .
+
+    SEMI            reduce using rule 74 (Expr -> LPAREN Expr RPAREN .)
+    PLUS            reduce using rule 74 (Expr -> LPAREN Expr RPAREN .)
+    MINUS           reduce using rule 74 (Expr -> LPAREN Expr RPAREN .)
+    TIMES           reduce using rule 74 (Expr -> LPAREN Expr RPAREN .)
+    DIVIDE          reduce using rule 74 (Expr -> LPAREN Expr RPAREN .)
+    LSHIFT          reduce using rule 74 (Expr -> LPAREN Expr RPAREN .)
+    RSHIFT          reduce using rule 74 (Expr -> LPAREN Expr RPAREN .)
+    LT              reduce using rule 74 (Expr -> LPAREN Expr RPAREN .)
+    GT              reduce using rule 74 (Expr -> LPAREN Expr RPAREN .)
+    EQ              reduce using rule 74 (Expr -> LPAREN Expr RPAREN .)
+    NE              reduce using rule 74 (Expr -> LPAREN Expr RPAREN .)
+    LE              reduce using rule 74 (Expr -> LPAREN Expr RPAREN .)
+    GE              reduce using rule 74 (Expr -> LPAREN Expr RPAREN .)
+    OR              reduce using rule 74 (Expr -> LPAREN Expr RPAREN .)
+    AND             reduce using rule 74 (Expr -> LPAREN Expr RPAREN .)
+    COMMA           reduce using rule 74 (Expr -> LPAREN Expr RPAREN .)
+    RPAREN          reduce using rule 74 (Expr -> LPAREN Expr RPAREN .)
+
+
+state 113
+
+    (42) IfStmt -> If TestExpr Then StmtsBlock . EndThen EndIf
+    (43) IfStmt -> If TestExpr Then StmtsBlock . EndThen Else StmtsBlock EndIf
+    (49) EndThen -> .
+
+    ELSE            reduce using rule 49 (EndThen -> .)
+    RBRACE          reduce using rule 49 (EndThen -> .)
+    ID              reduce using rule 49 (EndThen -> .)
+    PRINT           reduce using rule 49 (EndThen -> .)
+    RETURN          reduce using rule 49 (EndThen -> .)
+    BREAK           reduce using rule 49 (EndThen -> .)
+    CONTINUE        reduce using rule 49 (EndThen -> .)
+    IF              reduce using rule 49 (EndThen -> .)
+    WHILE           reduce using rule 49 (EndThen -> .)
+    INT             reduce using rule 49 (EndThen -> .)
+    CHAR            reduce using rule 49 (EndThen -> .)
+    VOID            reduce using rule 49 (EndThen -> .)
+
+    EndThen                        shift and go to state 120
+
+state 114
+
+    (45) StmtsBlock -> LBRACE . newScope Stmts RBRACE
+    (9) newScope -> .
+
+    RBRACE          reduce using rule 9 (newScope -> .)
+    ID              reduce using rule 9 (newScope -> .)
+    PRINT           reduce using rule 9 (newScope -> .)
+    RETURN          reduce using rule 9 (newScope -> .)
+    BREAK           reduce using rule 9 (newScope -> .)
+    CONTINUE        reduce using rule 9 (newScope -> .)
+    IF              reduce using rule 9 (newScope -> .)
+    WHILE           reduce using rule 9 (newScope -> .)
+    INT             reduce using rule 9 (newScope -> .)
+    CHAR            reduce using rule 9 (newScope -> .)
+    VOID            reduce using rule 9 (newScope -> .)
+
+    newScope                       shift and go to state 121
+
+state 115
+
+    (44) TestExpr -> LPAREN Expr RPAREN .
+
+    LBRACE          reduce using rule 44 (TestExpr -> LPAREN Expr RPAREN .)
+
+
+state 116
+
+    (51) WhileStmt -> While TestExpr Do StmtsBlock . EndWhile
+    (54) EndWhile -> .
+
+    RBRACE          reduce using rule 54 (EndWhile -> .)
+    ID              reduce using rule 54 (EndWhile -> .)
+    PRINT           reduce using rule 54 (EndWhile -> .)
+    RETURN          reduce using rule 54 (EndWhile -> .)
+    BREAK           reduce using rule 54 (EndWhile -> .)
+    CONTINUE        reduce using rule 54 (EndWhile -> .)
+    IF              reduce using rule 54 (EndWhile -> .)
+    WHILE           reduce using rule 54 (EndWhile -> .)
+    INT             reduce using rule 54 (EndWhile -> .)
+    CHAR            reduce using rule 54 (EndWhile -> .)
+    VOID            reduce using rule 54 (EndWhile -> .)
+
+    EndWhile                       shift and go to state 122
+
+state 117
+
+    (17) Arg -> Arg COMMA Type . ID
+
+    ID              shift and go to state 123
+
+
+state 118
+
+    (34) PActuals -> PActuals COMMA . Expr
+    (57) Expr -> . Expr PLUS Expr
+    (58) Expr -> . Expr MINUS Expr
+    (59) Expr -> . Expr TIMES Expr
+    (60) Expr -> . Expr DIVIDE Expr
+    (61) Expr -> . Expr LSHIFT Expr
+    (62) Expr -> . Expr RSHIFT Expr
+    (63) Expr -> . Expr LT Expr
+    (64) Expr -> . Expr GT Expr
+    (65) Expr -> . Expr EQ Expr
+    (66) Expr -> . Expr NE Expr
+    (67) Expr -> . Expr LE Expr
+    (68) Expr -> . Expr GE Expr
+    (69) Expr -> . Expr OR Expr
+    (70) Expr -> . Expr AND Expr
+    (71) Expr -> . NOT Expr
+    (72) Expr -> . MINUS Expr
+    (73) Expr -> . NUMBER
+    (74) Expr -> . LPAREN Expr RPAREN
+    (75) Expr -> . CallExpr
+    (76) Expr -> . ID
+    (37) CallExpr -> . ID LPAREN Actuals RPAREN
+
+    NOT             shift and go to state 51
+    MINUS           shift and go to state 50
+    NUMBER          shift and go to state 52
+    LPAREN          shift and go to state 53
+    ID              shift and go to state 55
+
+    Expr                           shift and go to state 124
+    CallExpr                       shift and go to state 54
+
+state 119
+
+    (33) PrintStmt -> PRINT LPAREN Actuals RPAREN SEMI .
+
+    RBRACE          reduce using rule 33 (PrintStmt -> PRINT LPAREN Actuals RPAREN SEMI .)
+    ID              reduce using rule 33 (PrintStmt -> PRINT LPAREN Actuals RPAREN SEMI .)
+    PRINT           reduce using rule 33 (PrintStmt -> PRINT LPAREN Actuals RPAREN SEMI .)
+    RETURN          reduce using rule 33 (PrintStmt -> PRINT LPAREN Actuals RPAREN SEMI .)
+    BREAK           reduce using rule 33 (PrintStmt -> PRINT LPAREN Actuals RPAREN SEMI .)
+    CONTINUE        reduce using rule 33 (PrintStmt -> PRINT LPAREN Actuals RPAREN SEMI .)
+    IF              reduce using rule 33 (PrintStmt -> PRINT LPAREN Actuals RPAREN SEMI .)
+    WHILE           reduce using rule 33 (PrintStmt -> PRINT LPAREN Actuals RPAREN SEMI .)
+    INT             reduce using rule 33 (PrintStmt -> PRINT LPAREN Actuals RPAREN SEMI .)
+    CHAR            reduce using rule 33 (PrintStmt -> PRINT LPAREN Actuals RPAREN SEMI .)
+    VOID            reduce using rule 33 (PrintStmt -> PRINT LPAREN Actuals RPAREN SEMI .)
+
+
+state 120
+
+    (42) IfStmt -> If TestExpr Then StmtsBlock EndThen . EndIf
+    (43) IfStmt -> If TestExpr Then StmtsBlock EndThen . Else StmtsBlock EndIf
+    (50) EndIf -> .
+    (47) Else -> . ELSE
+
+    RBRACE          reduce using rule 50 (EndIf -> .)
+    ID              reduce using rule 50 (EndIf -> .)
+    PRINT           reduce using rule 50 (EndIf -> .)
+    RETURN          reduce using rule 50 (EndIf -> .)
+    BREAK           reduce using rule 50 (EndIf -> .)
+    CONTINUE        reduce using rule 50 (EndIf -> .)
+    IF              reduce using rule 50 (EndIf -> .)
+    WHILE           reduce using rule 50 (EndIf -> .)
+    INT             reduce using rule 50 (EndIf -> .)
+    CHAR            reduce using rule 50 (EndIf -> .)
+    VOID            reduce using rule 50 (EndIf -> .)
+    ELSE            shift and go to state 127
+
+    EndIf                          shift and go to state 125
+    Else                           shift and go to state 126
+
+state 121
+
+    (45) StmtsBlock -> LBRACE newScope . Stmts RBRACE
+    (21) Stmts -> . Stmts Stmt
+    (22) Stmts -> .
+
+    RBRACE          reduce using rule 22 (Stmts -> .)
+    ID              reduce using rule 22 (Stmts -> .)
+    PRINT           reduce using rule 22 (Stmts -> .)
+    RETURN          reduce using rule 22 (Stmts -> .)
+    BREAK           reduce using rule 22 (Stmts -> .)
+    CONTINUE        reduce using rule 22 (Stmts -> .)
+    IF              reduce using rule 22 (Stmts -> .)
+    WHILE           reduce using rule 22 (Stmts -> .)
+    INT             reduce using rule 22 (Stmts -> .)
+    CHAR            reduce using rule 22 (Stmts -> .)
+    VOID            reduce using rule 22 (Stmts -> .)
+
+    Stmts                          shift and go to state 128
+
+state 122
+
+    (51) WhileStmt -> While TestExpr Do StmtsBlock EndWhile .
+
+    RBRACE          reduce using rule 51 (WhileStmt -> While TestExpr Do StmtsBlock EndWhile .)
+    ID              reduce using rule 51 (WhileStmt -> While TestExpr Do StmtsBlock EndWhile .)
+    PRINT           reduce using rule 51 (WhileStmt -> While TestExpr Do StmtsBlock EndWhile .)
+    RETURN          reduce using rule 51 (WhileStmt -> While TestExpr Do StmtsBlock EndWhile .)
+    BREAK           reduce using rule 51 (WhileStmt -> While TestExpr Do StmtsBlock EndWhile .)
+    CONTINUE        reduce using rule 51 (WhileStmt -> While TestExpr Do StmtsBlock EndWhile .)
+    IF              reduce using rule 51 (WhileStmt -> While TestExpr Do StmtsBlock EndWhile .)
+    WHILE           reduce using rule 51 (WhileStmt -> While TestExpr Do StmtsBlock EndWhile .)
+    INT             reduce using rule 51 (WhileStmt -> While TestExpr Do StmtsBlock EndWhile .)
+    CHAR            reduce using rule 51 (WhileStmt -> While TestExpr Do StmtsBlock EndWhile .)
+    VOID            reduce using rule 51 (WhileStmt -> While TestExpr Do StmtsBlock EndWhile .)
+
+
+state 123
+
+    (17) Arg -> Arg COMMA Type ID .
+
+    COMMA           reduce using rule 17 (Arg -> Arg COMMA Type ID .)
+    RPAREN          reduce using rule 17 (Arg -> Arg COMMA Type ID .)
+
+
+state 124
+
+    (34) PActuals -> PActuals COMMA Expr .
+    (57) Expr -> Expr . PLUS Expr
+    (58) Expr -> Expr . MINUS Expr
+    (59) Expr -> Expr . TIMES Expr
+    (60) Expr -> Expr . DIVIDE Expr
+    (61) Expr -> Expr . LSHIFT Expr
+    (62) Expr -> Expr . RSHIFT Expr
+    (63) Expr -> Expr . LT Expr
+    (64) Expr -> Expr . GT Expr
+    (65) Expr -> Expr . EQ Expr
+    (66) Expr -> Expr . NE Expr
+    (67) Expr -> Expr . LE Expr
+    (68) Expr -> Expr . GE Expr
+    (69) Expr -> Expr . OR Expr
+    (70) Expr -> Expr . AND Expr
+
+    COMMA           reduce using rule 34 (PActuals -> PActuals COMMA Expr .)
+    RPAREN          reduce using rule 34 (PActuals -> PActuals COMMA Expr .)
+    PLUS            shift and go to state 71
+    MINUS           shift and go to state 72
+    TIMES           shift and go to state 73
+    DIVIDE          shift and go to state 74
+    LSHIFT          shift and go to state 75
+    RSHIFT          shift and go to state 76
+    LT              shift and go to state 77
+    GT              shift and go to state 78
+    EQ              shift and go to state 79
+    NE              shift and go to state 80
+    LE              shift and go to state 81
+    GE              shift and go to state 82
+    OR              shift and go to state 83
+    AND             shift and go to state 84
+
+
+state 125
+
+    (42) IfStmt -> If TestExpr Then StmtsBlock EndThen EndIf .
+
+    RBRACE          reduce using rule 42 (IfStmt -> If TestExpr Then StmtsBlock EndThen EndIf .)
+    ID              reduce using rule 42 (IfStmt -> If TestExpr Then StmtsBlock EndThen EndIf .)
+    PRINT           reduce using rule 42 (IfStmt -> If TestExpr Then StmtsBlock EndThen EndIf .)
+    RETURN          reduce using rule 42 (IfStmt -> If TestExpr Then StmtsBlock EndThen EndIf .)
+    BREAK           reduce using rule 42 (IfStmt -> If TestExpr Then StmtsBlock EndThen EndIf .)
+    CONTINUE        reduce using rule 42 (IfStmt -> If TestExpr Then StmtsBlock EndThen EndIf .)
+    IF              reduce using rule 42 (IfStmt -> If TestExpr Then StmtsBlock EndThen EndIf .)
+    WHILE           reduce using rule 42 (IfStmt -> If TestExpr Then StmtsBlock EndThen EndIf .)
+    INT             reduce using rule 42 (IfStmt -> If TestExpr Then StmtsBlock EndThen EndIf .)
+    CHAR            reduce using rule 42 (IfStmt -> If TestExpr Then StmtsBlock EndThen EndIf .)
+    VOID            reduce using rule 42 (IfStmt -> If TestExpr Then StmtsBlock EndThen EndIf .)
+
+
+state 126
+
+    (43) IfStmt -> If TestExpr Then StmtsBlock EndThen Else . StmtsBlock EndIf
+    (45) StmtsBlock -> . LBRACE newScope Stmts RBRACE
+
+    LBRACE          shift and go to state 114
+
+    StmtsBlock                     shift and go to state 129
+
+state 127
+
+    (47) Else -> ELSE .
+
+    LBRACE          reduce using rule 47 (Else -> ELSE .)
+
+
+state 128
+
+    (45) StmtsBlock -> LBRACE newScope Stmts . RBRACE
+    (21) Stmts -> Stmts . Stmt
+    (23) Stmt -> . AssignStmt
+    (24) Stmt -> . PrintStmt
+    (25) Stmt -> . CallStmt
+    (26) Stmt -> . ReturnStmt
+    (27) Stmt -> . IfStmt
+    (28) Stmt -> . WhileStmt
+    (29) Stmt -> . BreakStmt
+    (30) Stmt -> . ContinueStmt
+    (31) Stmt -> . VarDeclStmt
+    (32) AssignStmt -> . ID ASSIGN Expr SEMI
+    (33) PrintStmt -> . PRINT LPAREN Actuals RPAREN SEMI
+    (36) CallStmt -> . CallExpr SEMI
+    (40) ReturnStmt -> . RETURN Expr SEMI
+    (41) ReturnStmt -> . RETURN SEMI
+    (42) IfStmt -> . If TestExpr Then StmtsBlock EndThen EndIf
+    (43) IfStmt -> . If TestExpr Then StmtsBlock EndThen Else StmtsBlock EndIf
+    (51) WhileStmt -> . While TestExpr Do StmtsBlock EndWhile
+    (55) BreakStmt -> . BREAK SEMI
+    (56) ContinueStmt -> . CONTINUE SEMI
+    (18) VarDeclStmt -> . VarDecl SEMI
+    (37) CallExpr -> . ID LPAREN Actuals RPAREN
+    (46) If -> . IF
+    (52) While -> . WHILE
+    (19) VarDecl -> . Type ID
+    (20) VarDecl -> . VarDecl COMMA ID
+    (13) Type -> . INT
+    (14) Type -> . CHAR
+    (15) Type -> . VOID
+
+    RBRACE          shift and go to state 130
+    ID              shift and go to state 31
+    PRINT           shift and go to state 32
+    RETURN          shift and go to state 34
+    BREAK           shift and go to state 37
+    CONTINUE        shift and go to state 38
+    IF              shift and go to state 40
+    WHILE           shift and go to state 41
+    INT             shift and go to state 8
+    CHAR            shift and go to state 9
+    VOID            shift and go to state 10
+
+    Stmt                           shift and go to state 21
+    AssignStmt                     shift and go to state 22
+    PrintStmt                      shift and go to state 23
+    CallStmt                       shift and go to state 24
+    ReturnStmt                     shift and go to state 25
+    IfStmt                         shift and go to state 26
+    WhileStmt                      shift and go to state 27
+    BreakStmt                      shift and go to state 28
+    ContinueStmt                   shift and go to state 29
+    VarDeclStmt                    shift and go to state 30
+    CallExpr                       shift and go to state 33
+    If                             shift and go to state 35
+    While                          shift and go to state 36
+    VarDecl                        shift and go to state 39
+    Type                           shift and go to state 42
+
+state 129
+
+    (43) IfStmt -> If TestExpr Then StmtsBlock EndThen Else StmtsBlock . EndIf
+    (50) EndIf -> .
+
+    RBRACE          reduce using rule 50 (EndIf -> .)
+    ID              reduce using rule 50 (EndIf -> .)
+    PRINT           reduce using rule 50 (EndIf -> .)
+    RETURN          reduce using rule 50 (EndIf -> .)
+    BREAK           reduce using rule 50 (EndIf -> .)
+    CONTINUE        reduce using rule 50 (EndIf -> .)
+    IF              reduce using rule 50 (EndIf -> .)
+    WHILE           reduce using rule 50 (EndIf -> .)
+    INT             reduce using rule 50 (EndIf -> .)
+    CHAR            reduce using rule 50 (EndIf -> .)
+    VOID            reduce using rule 50 (EndIf -> .)
+
+    EndIf                          shift and go to state 131
+
+state 130
+
+    (45) StmtsBlock -> LBRACE newScope Stmts RBRACE .
+
+    ELSE            reduce using rule 45 (StmtsBlock -> LBRACE newScope Stmts RBRACE .)
+    RBRACE          reduce using rule 45 (StmtsBlock -> LBRACE newScope Stmts RBRACE .)
+    ID              reduce using rule 45 (StmtsBlock -> LBRACE newScope Stmts RBRACE .)
+    PRINT           reduce using rule 45 (StmtsBlock -> LBRACE newScope Stmts RBRACE .)
+    RETURN          reduce using rule 45 (StmtsBlock -> LBRACE newScope Stmts RBRACE .)
+    BREAK           reduce using rule 45 (StmtsBlock -> LBRACE newScope Stmts RBRACE .)
+    CONTINUE        reduce using rule 45 (StmtsBlock -> LBRACE newScope Stmts RBRACE .)
+    IF              reduce using rule 45 (StmtsBlock -> LBRACE newScope Stmts RBRACE .)
+    WHILE           reduce using rule 45 (StmtsBlock -> LBRACE newScope Stmts RBRACE .)
+    INT             reduce using rule 45 (StmtsBlock -> LBRACE newScope Stmts RBRACE .)
+    CHAR            reduce using rule 45 (StmtsBlock -> LBRACE newScope Stmts RBRACE .)
+    VOID            reduce using rule 45 (StmtsBlock -> LBRACE newScope Stmts RBRACE .)
+
+
+state 131
+
+    (43) IfStmt -> If TestExpr Then StmtsBlock EndThen Else StmtsBlock EndIf .
+
+    RBRACE          reduce using rule 43 (IfStmt -> If TestExpr Then StmtsBlock EndThen Else StmtsBlock EndIf .)
+    ID              reduce using rule 43 (IfStmt -> If TestExpr Then StmtsBlock EndThen Else StmtsBlock EndIf .)
+    PRINT           reduce using rule 43 (IfStmt -> If TestExpr Then StmtsBlock EndThen Else StmtsBlock EndIf .)
+    RETURN          reduce using rule 43 (IfStmt -> If TestExpr Then StmtsBlock EndThen Else StmtsBlock EndIf .)
+    BREAK           reduce using rule 43 (IfStmt -> If TestExpr Then StmtsBlock EndThen Else StmtsBlock EndIf .)
+    CONTINUE        reduce using rule 43 (IfStmt -> If TestExpr Then StmtsBlock EndThen Else StmtsBlock EndIf .)
+    IF              reduce using rule 43 (IfStmt -> If TestExpr Then StmtsBlock EndThen Else StmtsBlock EndIf .)
+    WHILE           reduce using rule 43 (IfStmt -> If TestExpr Then StmtsBlock EndThen Else StmtsBlock EndIf .)
+    INT             reduce using rule 43 (IfStmt -> If TestExpr Then StmtsBlock EndThen Else StmtsBlock EndIf .)
+    CHAR            reduce using rule 43 (IfStmt -> If TestExpr Then StmtsBlock EndThen Else StmtsBlock EndIf .)
+    VOID            reduce using rule 43 (IfStmt -> If TestExpr Then StmtsBlock EndThen Else StmtsBlock EndIf .)
+
